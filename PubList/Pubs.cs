@@ -10,18 +10,21 @@ namespace PubList
     {
         public int Number { get; set; }
         public string Name { get; set; }
-        public string Metro { get; set; }
+        public string Opinion { get; set; }
+        public string Location { get; set; }
+        public bool Vstd { get; set; }
 
-        public string Pubinfo()
-        {
-            return string.Format("{0} :м.{1}", Name, Metro); //string. Format создает строчку ( фича для {0})
-        }
+        public List<Positions> beer = new List<Positions>();
 
-        public void Show(Pubs a)
+        //public string Pubinfo()
+        //{
+        //    return string.Format("{0} :м.{1}", Name, Metro); //string. Format создает строчку ( фича для {0})
+        //}
+
+        public Pubs(string Name, int Number)
         {
-            //Pubs A = new Pubs{ Number = Number; Metro = "м." + Metro; Name =Name };
-            a.Metro = "м." + Metro;
-            
+            this.Name = Name;
+            this.Number = Number;
         }
     }
 }
