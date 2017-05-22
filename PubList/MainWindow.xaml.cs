@@ -83,13 +83,39 @@ namespace PubList
             wnd.Show();
         }
 
-        private void Search_Click(object sender, RoutedEventArgs e)
+        private void Confirm_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (ListViewItem item in List1.Items)
+            {
+
+            }
+        }
+
+        private void Randomize_Click(object sender, RoutedEventArgs e)
         {
             Random g = new Random();
             int r = g.Next(0, pubs.Count);
-        
+        }
+
+        private void cbx_Checked(object sender, RoutedEventArgs e)
+        {
+            Pubs a = sender as Pubs;
+          
+
+        }
+
+        private void srch_GotFocus(object sender, RoutedEventArgs e)
+        {
             
-            
+            TextBox tb = (TextBox)sender;
+            if (tb.IsFocused)
+            {
+                tb.Text = string.Empty;
+                tb.GotFocus -= srch_GotFocus;
+                tb.FontWeight = FontWeights.Regular;
+                tb.FontStyle = FontStyles.Normal;
+            }
+            tb.GotFocus += srch_GotFocus;
         }
 
         //private void AddToVisited_Click(object sender, RoutedEventArgs e)

@@ -6,8 +6,28 @@
         xmlns:local="clr-namespace:PubList"
         mc:Ignorable="d"
         Title="AddItem" Height="300" Width="300">
-    
+
     <Grid>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="30" Width="86"/>
+        <TextBlock HorizontalAlignment="Center"  Text="Add New Pub to Your Collection!" FontSize="14" FontStyle="Italic" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Height="29" Width="210" Margin="43,0,40.333,0"/>
+        <ListBox Height="242" Margin="0,29,0.333,-0.333" VerticalAlignment="Top">
+            <Grid Height="242" Width="290">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="17*">
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="41*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Name" TextAlignment="Center" FontSize="18" FontStretch="Expanded"  Grid.Column="0" Grid.Row="0" Width="auto" FontWeight="Bold" Height="auto" Margin="0,0,5.333,47.667" Grid.RowSpan="2"/>
+                <TextBlock Text="Location" TextAlignment="Center" FontSize="18" FontStretch="Expanded"  Grid.Column="0" Grid.Row="1" Width="auto" FontWeight="Bold" Height="auto" Margin="0,0.333,5.333,48.333" Grid.RowSpan="2"/>
+                <TextBlock Text="Comment" TextAlignment="Center" FontSize="18" FontStretch="Expanded"  Grid.Column="0" Grid.Row="4" Width="auto" FontWeight="Bold" Height="auto" Margin="0,0,5.333,0"/>
+                <TextBlock Text="" TextAlignment="Center" FontSize="18" FontStretch="Expanded"  Grid.Column="0" Grid.Row="2" Width="auto" FontWeight="Bold" Height="auto" Margin="0,0.333,5.333,0.333"/>
+            </Grid>
+        </ListBox>
     </Grid>
 </Window>

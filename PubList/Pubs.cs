@@ -10,7 +10,7 @@ namespace PubList
     {
         public int Number { get; set; }
         public string Name { get; set; }
-        public string Opinion { get; set; }
+        public string Comment { get; set; }
         public string Location { get; set; }
         public bool Vstd { get; set; }
 
