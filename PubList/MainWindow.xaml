@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PubList"
         mc:Ignorable="d"
         Title="PubList"  Height="350" Width="600" ResizeMode="NoResize" >
-    <Grid>
+    <Grid Margin="0,0,-5.333,-2">
         <Grid.Background>
             <ImageBrush ImageSource="C:\Users\rinat\OneDrive\Документы\Visual Studio 2017\Projects\PubList\PubList\Pub.jpg"/>
         </Grid.Background>
@@ -22,22 +22,23 @@
             <ColumnDefinition Width="260*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Background="Cornsilk" FontSize="25" HorizontalAlignment="Center" Height="30" FontFamily="Blackadder ITC" TextWrapping="Wrap" Text="My Collection:"  TextAlignment="Center" VerticalAlignment="Center" Width="215" Grid.ColumnSpan="2" Margin="10,10,155,33.333"/>
-        <ListView x:Name="List1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="174" Margin="65,73,49.667,1.667" VerticalAlignment="Center" Width="480" Grid.RowSpan="3">
+        <ListView x:Name="List1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="174" Margin="29,0,91,2.667" VerticalAlignment="Center" Width="480" Grid.RowSpan="2" SelectionMode="Single" Grid.Row="1">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="№" DisplayMemberBinding="{Binding Path= Number}" Width="50"/>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path= Name}" Width="200" />
-                        <GridViewColumn Header="Visit" Width="200">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox x:Name="cbx" IsChecked="{Binding Path = Vstd}" Checked="cbx_Checked" AutomationProperties.Name="cbx" IsManipulationEnabled="True" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                        <GridViewColumn Header="№" DisplayMemberBinding="{Binding Path=Number}" Width="50"/>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="200" />
+                        <GridViewColumn Header="Visit" DisplayMemberBinding="{Binding Path=Toxa}" Width="200"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Edit" MouseRightButtonDown="MenuItem_Edit"/>
+                    <MenuItem Header="Delete" MouseRightButtonDown="MenuItem_Delete"/>
+                    <MenuItem Header="Mark As Visited" MouseRightButtonDown="MenuItem_Visited"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
         </ListView>
         <TextBlock x:Name="Reveal" FontFamily="Blackadder ITC" Background ="Cornsilk"  HorizontalAlignment="Left" Height="45" Grid.Row="3" TextWrapping="Wrap" Margin="25,18.333,0,10" FontSize="25" Text="Where to go today?"  TextAlignment="Center" VerticalAlignment="Center" Width="185"/>
         <Button x:Name="Randomize" Content="???" Height="30" Margin="0.333,33.333,130,0" Grid.Row="3" VerticalAlignment="Top" Grid.Column="1" Click="Randomize_Click"/>
@@ -50,7 +51,7 @@
             </StackPanel>
         </Button>
         <Button x:Name="Del" Content="Del" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Height="28" Grid.Column="2" Margin="170,43.333,0,0" Grid.Row="3"/>
-        <Button x:Name="Confirm"  Content="Confirm" VerticalAlignment="Top" RenderTransformOrigin="7.724,10.833" Grid.Column="2" Margin="165,38.333,-0.333,0" Grid.Row="2" Height="30" Grid.RowSpan="2" HorizontalAlignment="Left" Width="50" Click="Confirm_Click"/>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="103" Grid.Column="1" Margin="19.333,45,0,0"/>
+        <Button x:Name="Confirm"  Content="Confirm" VerticalAlignment="Top" RenderTransformOrigin="7.724,10.833" Grid.Column="2" Margin="131.667,36,0,0" Grid.Row="2" Height="30" HorizontalAlignment="Left" Width="50" Click="Confirm_Click"/>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="103" Grid.Column="1" Margin="21.333,46,0,0"/>
     </Grid>
 </Window>

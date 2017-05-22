@@ -22,7 +22,6 @@ namespace PubList
     public partial class MainWindow : Window
     {
         List<Pubs> pubs = new List<Pubs> ();
-        List<Pubs> visited_pubs = new List<Pubs>();
         public int i = 1;
         public MainWindow()
         {
@@ -117,6 +116,34 @@ namespace PubList
             }
             tb.GotFocus += srch_GotFocus;
         }
+
+        private void MenuItem_Edit(object sender, MouseButtonEventArgs e)
+        {   
+
+        }
+
+        private void MenuItem_Delete(object sender, MouseButtonEventArgs e)
+        {
+            var a = List1.SelectedItem;
+            //if (List1.SelectedIndex == -1)
+            //{
+            //    return;
+            //}
+            pubs.Remove((Pubs)a);
+            List1.Items.Remove(a);
+
+        }
+
+        private void MenuItem_Visited(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
 
         //private void AddToVisited_Click(object sender, RoutedEventArgs e)
         //{

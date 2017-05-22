@@ -8,9 +8,9 @@ namespace PubList
 {
     class Positions
     {
-        public Positions()
-        {
-
-        }
+        public string BName { get; set; }
+        public string Country { get; set; }
+        public string Brewery { get; set; }
+        public double Alc { get; set; }
     }
 }

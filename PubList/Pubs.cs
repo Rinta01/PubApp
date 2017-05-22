@@ -12,7 +12,35 @@ namespace PubList
         public string Name { get; set; }
         public string Comment { get; set; }
         public string Location { get; set; }
-        public bool Vstd { get; set; }
+        private Positions Cranes;
+
+        public Positions DimasLox
+        {
+            get { return Cranes; }
+            set { Cranes = value; }
+        }
+
+
+        private bool v;
+
+        public bool Vstd
+        {
+            get { return v; }
+            set
+            {
+                if (value == true)
+                {
+                    Toxa = "yes";
+                }
+                else
+                    Toxa = "no";
+
+                v = value;
+                
+            }
+        }
+
+        public string Toxa;
 
         public List<Positions> beer = new List<Positions>();
 
@@ -26,5 +54,6 @@ namespace PubList
             this.Name = Name;
             this.Number = Number;
         }
+
     }
 }

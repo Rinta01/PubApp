@@ -23,5 +23,57 @@ namespace PubList
         {
             InitializeComponent();
         }
+
+        private void Metro_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.IsFocused)
+            {
+                tb.Text = string.Empty;
+                tb.GotFocus -= Metro_GotFocus;
+                tb.FontWeight = FontWeights.Regular;
+                tb.FontStyle = FontStyles.Normal;
+            }
+            tb.GotFocus += Metro_GotFocus;
+        }
+
+        private void Address_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.IsFocused)
+            {
+                tb.Text = string.Empty;
+                tb.GotFocus -= Metro_GotFocus;
+                tb.FontWeight = FontWeights.Regular;
+                tb.FontStyle = FontStyles.Normal;
+            }
+            tb.GotFocus += Metro_GotFocus;
+        }
+
+        private void Comment_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.IsFocused)
+            {
+                tb.Text = string.Empty;
+                tb.GotFocus -= Comment_GotFocus;
+                tb.FontWeight = FontWeights.Regular;
+                tb.FontStyle = FontStyles.Normal;
+            }
+            tb.GotFocus +=Comment_GotFocus;
+        }
+
+        private void Nm_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.IsFocused)
+            {
+                tb.Text = string.Empty;
+                tb.GotFocus -= Nm_GotFocus;
+                tb.FontWeight = FontWeights.Regular;
+                tb.FontStyle = FontStyles.Normal;
+            }
+            tb.GotFocus += Nm_GotFocus;
+        }
     }
 }
