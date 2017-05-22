@@ -19,6 +19,7 @@ namespace PubList
     /// </summary>
     public partial class AddItem : Window
     {
+        List<Positions> beer = new List<Positions>();
         public AddItem()
         {
             InitializeComponent();
@@ -74,6 +75,24 @@ namespace PubList
                 tb.FontStyle = FontStyles.Normal;
             }
             tb.GotFocus += Nm_GotFocus;
+        }
+
+        private void Cranes_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.IsFocused)
+            {
+                tb.Text = string.Empty;
+                tb.GotFocus -= Cranes_GotFocus;
+                tb.FontWeight = FontWeights.Regular;
+                tb.FontStyle = FontStyles.Normal;
+            }
+            tb.GotFocus += Cranes_GotFocus;
+        }
+
+        private void BAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Positions p = new Positions(Cranes.Text);
         }
     }
 }

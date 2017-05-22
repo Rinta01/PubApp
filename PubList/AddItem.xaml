@@ -24,14 +24,22 @@
         <TextBlock Text="Location" TextAlignment="Center" FontSize="18" FontStretch="Expanded"  Grid.Column="0" Grid.Row="1" Width="auto" FontWeight="Bold" Height="auto" Margin="0,0.667,6,47.333" Grid.RowSpan="2"/>
         <TextBlock Text="Comment" TextAlignment="Center" FontSize="18" FontStretch="Expanded"  Grid.Column="0" Grid.Row="2" Width="auto" FontWeight="Bold" Height="auto" Margin="0,0.333,6,0.333"/>
         <TextBlock TextAlignment="Center" Text="Cranes" FontSize="18" FontStretch="Expanded"  Grid.Column="0" Grid.Row="2" Width="auto" FontWeight="Bold" Height="auto" Margin="0,48.333,0,2.333" Grid.RowSpan="2"/>
-        <ComboBox Margin="10,10.667,311.333,9.333" Grid.Row="3" Grid.Column="1"/>
+        <ComboBox Margin="10,10.667,311.333,9.333" Grid.Row="3" Grid.Column="1">
+            <ComboBoxItem>Stout</ComboBoxItem>
+            <ComboBoxItem>Ale</ComboBoxItem>
+            <ComboBoxItem>IPA</ComboBoxItem>
+            <ComboBoxItem>Lager</ComboBoxItem>
+            <ComboBoxItem>Porter</ComboBoxItem>
+            <ComboBoxItem>Soft Drink</ComboBoxItem>
+        </ComboBox>
         <TextBox x:Name="Nm" GotFocus="Nm_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="9,10,0,0" TextWrapping="Wrap" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Text="How is it called?" VerticalAlignment="Top" Width="411"/>
         <TextBox x:Name="Address" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="157,10.333,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Address" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="Address_GotFocus" VerticalAlignment="Top" Width="263"/>
         <TextBox x:Name="Comment" GotFocus="Comment_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="9,10.667,0,0" Grid.Row="2" TextWrapping="Wrap" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Text="Share some of your thoughts" VerticalAlignment="Top" Width="411"/>
-        <TextBox TextWrapping="Wrap" Text="" Grid.Column="1" Margin="157,10.667,66.333,9.333" Grid.Row="3"/>
-        <Button Content="+" Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="400,10.667,0,0" Grid.Row="3" VerticalAlignment="Top" Width="35"/>
-        <TextBlock HorizontalAlignment="Center"  Text="Add New Pub to Your Collection!" FontSize="14" FontStyle="Italic" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Height="29" Width="210" Margin="32,-24,203.333,0" Grid.Column="1"/>
-        <ListBox HorizontalAlignment="Left" Height="134" Grid.RowSpan="3" VerticalAlignment="Top" Width="394" Margin="10,2.667,0,0" Grid.Row="4" Grid.ColumnSpan="2">
+        <TextBox x:Name="Cranes" TextWrapping="Wrap" Text="What beverages did you enjoy most?" GotFocus="Cranes_GotFocus" Grid.Column="1" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Margin="157,10.667,66.333,9.333" Grid.Row="3"/>
+        <TextBox x:Name="Metro" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Metro Station" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" VerticalAlignment="Top" Width="143" Grid.Column="1" Margin="9,10.333,0,0" Grid.Row="1" GotFocus="Metro_GotFocus"/>
+        <Button x:Name="BAdd" Content="+" Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="400,10.667,0,0" Grid.Row="3" VerticalAlignment="Top" Width="35" Click="BAdd_Click"/>
+        <ListBox HorizontalAlignment="Left" Height="143" Grid.RowSpan="3" VerticalAlignment="Top" Width="372" Margin="10,9.667,0,0" Grid.Row="4" Grid.ColumnSpan="2">
+            <TextBlock HorizontalAlignment="Center"  Text="Add New Pub to Your Collection!" FontSize="14" FontStyle="Italic" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Height="29" Width="210" Margin="32,-24,203.333,0" Grid.Column="1"/>
             <Grid Height="134" Width="379" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
@@ -39,6 +47,13 @@
                 </Grid.ColumnDefinitions>
             </Grid>
         </ListBox>
-        <TextBox x:Name="Metro" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Metro Station" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" VerticalAlignment="Top" Width="143" Grid.Column="1" Margin="9,10.333,0,0" Grid.Row="1" GotFocus="Metro_GotFocus"/>
+        <ListBox HorizontalAlignment="Left" Height="143" Grid.RowSpan="3" VerticalAlignment="Top" Width="372" Margin="8,9.667,0,0" Grid.Row="4" Grid.ColumnSpan="2">
+            <Grid Height="134" Width="379" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </ListBox>
     </Grid>
 </Window>

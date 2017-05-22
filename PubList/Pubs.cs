@@ -42,8 +42,6 @@ namespace PubList
 
         public string Toxa;
 
-        public List<Positions> beer = new List<Positions>();
-
         //public string Pubinfo()
         //{
         //    return string.Format("{0} :м.{1}", Name, Metro); //string. Format создает строчку ( фича для {0})

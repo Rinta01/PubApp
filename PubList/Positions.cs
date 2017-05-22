@@ -11,6 +11,18 @@ namespace PubList
         public string BName { get; set; }
         public string Country { get; set; }
         public string Brewery { get; set; }
+        public string Sort { get; set; }
         public double Alc { get; set; }
+        
+
+        public Positions(string a)
+        {
+            BName=a;
+            //Country= b;
+            //Brewery= c;
+            //Sort=d;
+            //Alc=e;
+        }
+   
     }
 }
