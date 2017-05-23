@@ -1,12 +1,13 @@
-﻿<Window x:Class="PubList.AddItem"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PubList"
-        mc:Ignorable="d"
-        Title="Add New Pub to Your Collection!" Background="Beige"  FontStyle="Italic" Height="450.667" Width="751">
-    <Grid Margin="0,10,3,-19.333">
+﻿<Page x:Class="PubList.AddNewItem"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PubList"
+      mc:Ignorable="d"
+      Title="Add New Pub to Your Collection!" Background="Beige" Height="452.092" Width="752.425">
+
+    <Grid Margin="0,0,2.667,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -59,11 +60,12 @@
         <TextBox x:Name="BCountry" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="BCountry_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="8.667,9.667,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Country (optional)" VerticalAlignment="Top" Width="160"/>
         <TextBox x:Name="Brewery" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" HorizontalAlignment="Left" GotFocus="Brewery_GotFocus" Height="37" TextWrapping="Wrap" Text="Brewery (optional)" VerticalAlignment="Top" Width="185" Grid.Column="1" Margin="182.667,9.667,0,0" Grid.Row="4"/>
         <TextBox x:Name="AlcV" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="393.667,9.667,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Alcohol By Volume, % (optional)" VerticalAlignment="Top" Width="104"/>
-        <TextBlock Grid.Column="1" FontStyle="Italic" FontWeight="Heavy"  HorizontalAlignment="Left" Height="42" Margin="9.667,56.667,0,0" Grid.Row="5" VerticalAlignment="Top" Width="263" Grid.RowSpan="2"><Run Text="Check if you already "/><Run Text="visited this place."/><InlineUIContainer>
-                <CheckBox x:Name="vv" Checked="vv_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="16" Width="17" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding Path=Vstd, Mode=TwoWay}">
-                </CheckBox>
-            </InlineUIContainer></TextBlock>
+        <TextBlock Grid.Column="1" FontStyle="Italic" FontWeight="Heavy"  HorizontalAlignment="Left" Height="42" Margin="9.667,56.667,0,0" Grid.Row="5" VerticalAlignment="Top" Width="263" Grid.RowSpan="2"><Run Text="Check if you already "/><Run Text="visited this place."/></TextBlock>
+        <ComboBox Name="yn" Grid.Column="1" Margin="255.667,56.667,238.333,42.667" Grid.Row="5" Grid.RowSpan="2">
+            <ComboBoxItem>Yes</ComboBoxItem>
+            <ComboBoxItem>No</ComboBoxItem>
+        </ComboBox>
         <TextBox x:Name="BPrice" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="BPrice_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="10.667,10.667,0,0" Grid.Row="5" TextWrapping="Wrap" Text="Price (optional)" VerticalAlignment="Top" Width="158"/>
         <Button x:Name="Apply" Content="Add To My Collection" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="393.667,40.667,0,0" Grid.Row="5" Grid.RowSpan="2" VerticalAlignment="Top" Width="117" Click="Apply_Click"/>
     </Grid>
-</Window>
+</Page>

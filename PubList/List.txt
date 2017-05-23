@@ -1,5 +1,5 @@
-На Кранах;A;yes
-Varka;B;no
-Parka;C;yes
-Mollie's;D;no
-John Gilroy's;F;yes
+На Кранах;Трубная;yes
+Varka;Таганская;no
+Parka;Новокузнецкая;yes
+Mollie's;Лубянка;no
+John Gilroy's;Братиславская;yes

@@ -10,23 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PubList
 {
     /// <summary>
-    /// Логика взаимодействия для AddItem.xaml
+    /// Логика взаимодействия для AddNewItem.xaml
     /// </summary>
-    public partial class AddItem : Window
+    public partial class AddNewItem : Page
     {
-        MainWindow wnd;
+        MainPage mp;
         List<Positions> beer = new List<Positions>();
-        public AddItem()
+        public AddNewItem()
         {
             InitializeComponent();
         }
 
-        private void Metro_GotFocus(object sender, RoutedEventArgs e)
+    private void Metro_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
             if (tb.IsFocused)
@@ -62,7 +63,7 @@ namespace PubList
                 tb.FontWeight = FontWeights.Regular;
                 tb.FontStyle = FontStyles.Normal;
             }
-            tb.GotFocus +=Comment_GotFocus;
+            tb.GotFocus += Comment_GotFocus;
         }
 
         private void Nm_GotFocus(object sender, RoutedEventArgs e)
@@ -132,33 +133,32 @@ namespace PubList
         {
             try
             {
-                
-                
-                    Positions p = new Positions(Crane.Text, cmb.SelectedValue.ToString(), Brewery.Text, BCountry.Text, double.Parse(AlcV.Text), BPrice.Text);
-                    beer.Add(p);
-                    LCr.Items.Add(p);
-                    
-                
-                 if (String.IsNullOrEmpty(Crane.Text) || String.IsNullOrEmpty(cmb.SelectedValue.ToString()))
+                string a = Crane.Text;
+                string b = cmb.Text;
+                string c = Brewery.Text;
+                double d = double.Parse(AlcV.Text);
+                string f = BPrice.Text;
+
+
+
+                Positions p = new Positions(Crane.Text, cmb.Text, Brewery.Text, BCountry.Text, double.Parse(AlcV.Text), BPrice.Text);
+                beer.Add(p);
+                LCr.Items.Add(p);
+
+
+                if (String.IsNullOrEmpty(Crane.Text) || String.IsNullOrEmpty(cmb.SelectedValue.ToString()))
                     MessageBox.Show("Please select the beer sort or fill in its name");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void vv_Click(object sender, RoutedEventArgs e)
-        {
-            CheckBox check = sender as CheckBox;
-            MessageBox.Show(check.IsChecked.Value.ToString());
-
-        }
-
         private void Apply_Click(object sender, RoutedEventArgs e)
         {
 
-            Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text, Address.Text, beer, wnd.i, (bool)vv.Content);
-            wnd.i++;
-            wnd.List1.Items.Add(np);
-
+            Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text, Address.Text, beer, mp.i, yn.Text);
+            mp.i++;
+            mp.List1.Items.Add(np);
         }
     }
+   
 }

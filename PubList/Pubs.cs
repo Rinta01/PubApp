@@ -27,24 +27,24 @@ namespace PubList
 
         List<Positions> Cranes = new List<Positions>();
        
-        private bool v;
+        //private bool v;
 
-        public bool Vstd
-        {
-            get { return v; }
-            set
-            {
-                if (value == true)
-                {
-                    vs = "yes";
-                }
-                else
-                    vs = "no";
+        //public bool Vstd
+        //{
+        //    get { return v; }
+        //    set
+        //    {
+        //        if (value == true)
+        //        {
+        //            vs = "yes";
+        //        }
+        //        else
+        //            vs = "no";
 
-                v = value;
+        //        v = value;
                 
-            }
-        }
+        //    }
+        //}
 
         public string vs { get; set; }
 
@@ -62,7 +62,7 @@ namespace PubList
             vs = d;
             
         }
-        public Pubs(string Name, string b, string c, string d, List<Positions> e, int f, bool g)
+        public Pubs(string Name, string b, string c, string d, List<Positions> e, int f, string g)
         {
             this.Name = Name;
             Comment = b;
@@ -70,7 +70,7 @@ namespace PubList
             Address = d;
             Cranes = e;
             Number = f;
-            Vstd = g;
+            vs = g;
         }
 
     }
