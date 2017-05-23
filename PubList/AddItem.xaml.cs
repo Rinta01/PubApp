@@ -77,22 +77,69 @@ namespace PubList
             tb.GotFocus += Nm_GotFocus;
         }
 
-        private void Cranes_GotFocus(object sender, RoutedEventArgs e)
+        private void Crane_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
             if (tb.IsFocused)
             {
                 tb.Text = string.Empty;
-                tb.GotFocus -= Cranes_GotFocus;
+                tb.GotFocus -= Crane_GotFocus;
                 tb.FontWeight = FontWeights.Regular;
                 tb.FontStyle = FontStyles.Normal;
             }
-            tb.GotFocus += Cranes_GotFocus;
+            tb.GotFocus += Crane_GotFocus;
         }
 
+        private void BCountry_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.IsFocused)
+            {
+                tb.Text = string.Empty;
+                tb.GotFocus -= BCountry_GotFocus;
+                tb.FontWeight = FontWeights.Regular;
+                tb.FontStyle = FontStyles.Normal;
+            }
+            tb.GotFocus += BCountry_GotFocus;
+        }
+
+        private void Brewery_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.IsFocused)
+            {
+                tb.Text = string.Empty;
+                tb.GotFocus -= Brewery_GotFocus;
+                tb.FontWeight = FontWeights.Regular;
+                tb.FontStyle = FontStyles.Normal;
+            }
+            tb.GotFocus += Brewery_GotFocus;
+        }
+
+        private void BPrice_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.IsFocused)
+            {
+                tb.Text = string.Empty;
+                tb.GotFocus -= BPrice_GotFocus;
+                tb.FontWeight = FontWeights.Regular;
+                tb.FontStyle = FontStyles.Normal;
+            }
+            tb.GotFocus += BPrice_GotFocus;
+        }
         private void BAdd_Click(object sender, RoutedEventArgs e)
         {
-            Positions p = new Positions(Cranes.Text);
-        }
+            try {
+                if (Crane.Text != null && cmb.Text != null)
+                {
+                    Positions p = new Positions(Crane.Text, cmb.Text, Brewery.Text, BCountry.Text, double.Parse(AlcV.Text), BPrice.Text);
+                    LCr.Items.Add(p);
+                }
+                else
+                    MessageBox.Show("Please select the beer sort or fill in its name");
+            }
+            catch { MessageBox.Show("Wrong Data Format!"); }
     }
+            }
 }
