@@ -132,17 +132,17 @@ namespace PubList
         {
             try
             {
-                while (!(String.IsNullOrEmpty(Nm.Text) && String.IsNullOrEmpty(cmb.Text)))
-                {
-                    Positions p = new Positions(Crane.Text, cmb.Text, Brewery.Text, BCountry.Text, double.Parse(AlcV.Text), BPrice.Text);
+                
+                
+                    Positions p = new Positions(Crane.Text, cmb.SelectedValue.ToString(), Brewery.Text, BCountry.Text, double.Parse(AlcV.Text), BPrice.Text);
                     beer.Add(p);
                     LCr.Items.Add(p);
                     
-                }
-                 if (String.IsNullOrEmpty(Nm.Text) || String.IsNullOrEmpty(cmb.Text))
+                
+                 if (String.IsNullOrEmpty(Crane.Text) || String.IsNullOrEmpty(cmb.SelectedValue.ToString()))
                     MessageBox.Show("Please select the beer sort or fill in its name");
             }
-            catch { MessageBox.Show("Wrong Data Format!"); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void vv_Click(object sender, RoutedEventArgs e)

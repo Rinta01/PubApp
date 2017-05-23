@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -148,7 +149,13 @@ namespace PubList
 
         private void AddDat_Click(object sender, RoutedEventArgs e)
         {
+            using (FileStream fs = new FileStream(@"../../pubs.dat", FileMode.Create, FileAccess.Write))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(fs, pubs);
 
+            }
+            MessageBox.Show("Successfully imported to pubs.dat");
         }
 
 

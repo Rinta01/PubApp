@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PubList
 {
-    
+ [Serializable]   
     class Pubs
     {
         public int Number { get; set; }
@@ -46,7 +46,7 @@ namespace PubList
             }
         }
 
-        public string vs;
+        public string vs { get; set; }
 
 
         //public string Pubinfo()

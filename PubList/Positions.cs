@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PubList
 {
+    [Serializable]
     class Positions
     {
         public string BName { get; set; }
