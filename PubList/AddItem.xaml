@@ -60,9 +60,10 @@
         <TextBox x:Name="Brewery" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" HorizontalAlignment="Left" GotFocus="Brewery_GotFocus" Height="37" TextWrapping="Wrap" Text="Brewery (optional)" VerticalAlignment="Top" Width="185" Grid.Column="1" Margin="182.667,9.667,0,0" Grid.Row="4"/>
         <TextBox x:Name="AlcV" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="393.667,9.667,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Alcohol By Volume, % (optional)" VerticalAlignment="Top" Width="104"/>
         <TextBlock Grid.Column="1" FontStyle="Italic" FontWeight="Heavy"  HorizontalAlignment="Left" Height="42" Margin="9.667,56.667,0,0" Grid.Row="5" VerticalAlignment="Top" Width="263" Grid.RowSpan="2"><Run Text="Check if you already "/><Run Text="visited this place."/><InlineUIContainer>
-                <CheckBox x:Name="vv" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="16" Width="17" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding Path=Vstd, Mode=TwoWay}">
+                <CheckBox x:Name="vv" Click="vv_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="16" Width="17" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding Path=Vstd, Mode=TwoWay}">
                 </CheckBox>
             </InlineUIContainer></TextBlock>
         <TextBox x:Name="BPrice" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="BPrice_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="10.667,10.667,0,0" Grid.Row="5" TextWrapping="Wrap" Text="Price (optional)" VerticalAlignment="Top" Width="158"/>
+        <Button x:Name="Apply" Content="Add To My Collection" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="393.667,40.667,0,0" Grid.Row="5" Grid.RowSpan="2" VerticalAlignment="Top" Width="117" Click="Apply_Click"/>
     </Grid>
 </Window>

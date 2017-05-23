@@ -19,6 +19,7 @@ namespace PubList
     /// </summary>
     public partial class AddItem : Window
     {
+        MainWindow wnd;
         List<Positions> beer = new List<Positions>();
         public AddItem()
         {
@@ -128,18 +129,31 @@ namespace PubList
             }
             tb.GotFocus += BPrice_GotFocus;
         }
-        private void BAdd_Click(object sender, RoutedEventArgs e)
+        public void BAdd_Click(object sender, RoutedEventArgs e)
         {
             try {
                 if (Crane.Text != null && cmb.Text != null)
                 {
                     Positions p = new Positions(Crane.Text, cmb.Text, Brewery.Text, BCountry.Text, double.Parse(AlcV.Text), BPrice.Text);
-                    LCr.Items.Add(p);
+                    LCr.Items.Add(p); //Отсюда надо получить этот объект
                 }
                 else
                     MessageBox.Show("Please select the beer sort or fill in its name");
             }
             catch { MessageBox.Show("Wrong Data Format!"); }
+        }
+
+        private void vv_Click(object sender, RoutedEventArgs e)
+        {
+            vv.IsChecked = true;          
+        }
+
+        private void Apply_Click(object sender, RoutedEventArgs e)
+        {
+            
+            //Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text, Address.Text, ,wnd.i,);
+            //wnd.i++;
+            
+        }
     }
-            }
 }
