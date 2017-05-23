@@ -1,5 +1,5 @@
-На Кранах
-Varka
-Parka
-Mollie's
-John Gilroy's
+На Кранах;A;yes
+Varka;B;no
+Parka;C;yes
+Mollie's;D;no
+John Gilroy's;F;yes

@@ -20,7 +20,10 @@ namespace PubList
         {
             BName = a;
             Sort = b;
-
+            Brewery = "";
+            Country = "";
+            Alc = 0;
+            Bprice = "";
         }
 
         public Positions(string a, string b, string c, string d, double e, string f)
@@ -43,16 +46,21 @@ namespace PubList
             BName = a;
             Sort = b;
             Brewery = c;
+            Country = "";
+            Alc = 0;
+            Bprice = "";
            
         }
 
         public Positions(string a, string b, string c, string d )
-        {
-         
+        {     
             BName = a;
             Sort = b;
             Brewery = c;
             Country = d;
+            Alc = 0;
+            Bprice = "";
+
         }
         public Positions(string a, string b, string c, string d, double e)
         {
@@ -61,6 +69,7 @@ namespace PubList
             Brewery = c;
             Country = d;
             Alc = e;
+            Bprice = "";
         }
     }
 }

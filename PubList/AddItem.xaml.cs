@@ -116,7 +116,6 @@ namespace PubList
             }
             tb.GotFocus += Brewery_GotFocus;
         }
-
         private void BPrice_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
@@ -129,15 +128,18 @@ namespace PubList
             }
             tb.GotFocus += BPrice_GotFocus;
         }
-        public void BAdd_Click(object sender, RoutedEventArgs e)
+        private void BAdd_Click(object sender, RoutedEventArgs e)
         {
-            try {
-                if (Crane.Text != null && cmb.Text != null)
+            try
+            {
+                while (!(String.IsNullOrEmpty(Nm.Text) && String.IsNullOrEmpty(cmb.Text)))
                 {
                     Positions p = new Positions(Crane.Text, cmb.Text, Brewery.Text, BCountry.Text, double.Parse(AlcV.Text), BPrice.Text);
-                    LCr.Items.Add(p); //Отсюда надо получить этот объект
+                    beer.Add(p);
+                    LCr.Items.Add(p);
+                    
                 }
-                else
+                 if (String.IsNullOrEmpty(Nm.Text) || String.IsNullOrEmpty(cmb.Text))
                     MessageBox.Show("Please select the beer sort or fill in its name");
             }
             catch { MessageBox.Show("Wrong Data Format!"); }
@@ -145,15 +147,18 @@ namespace PubList
 
         private void vv_Click(object sender, RoutedEventArgs e)
         {
-            vv.IsChecked = true;          
+            CheckBox check = sender as CheckBox;
+            MessageBox.Show(check.IsChecked.Value.ToString());
+
         }
 
         private void Apply_Click(object sender, RoutedEventArgs e)
         {
-            
-            //Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text, Address.Text, ,wnd.i,);
-            //wnd.i++;
-            
+
+            Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text, Address.Text, beer, wnd.i, (bool)vv.Content);
+            wnd.i++;
+            wnd.List1.Items.Add(np);
+
         }
     }
 }

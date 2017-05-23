@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PubList
 {
+    
     class Pubs
     {
         public int Number { get; set; }
@@ -24,15 +25,8 @@ namespace PubList
                 loc = value; }
         }
 
-        private Positions Cranes;
-
-        public Positions InternalB
-        {
-            get { return Cranes; }
-            set { Cranes = value; }
-        }
-
-
+        List<Positions> Cranes = new List<Positions>();
+       
         private bool v;
 
         public bool Vstd
@@ -53,14 +47,22 @@ namespace PubList
         }
 
         public string vs;
-        
+
 
         //public string Pubinfo()
         //{
         //    return string.Format("{0} :м.{1}", Name, Metro); //string. Format создает строчку ( фича для {0})
         //}
 
-        public Pubs(string Name, string b, string c, string d, Positions e, int f, bool g)
+        public Pubs(string Name, int b, string c, string d)
+        {
+            this.Name = Name;
+            Number = b;
+            Metro = c;
+            vs = d;
+            
+        }
+        public Pubs(string Name, string b, string c, string d, List<Positions> e, int f, bool g)
         {
             this.Name = Name;
             Comment = b;

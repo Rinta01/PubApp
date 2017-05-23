@@ -30,26 +30,31 @@ namespace PubList
             using (FileStream fs = new FileStream("../../List.txt", FileMode.Open, FileAccess.Read))
             {
                 StreamReader sr = new StreamReader(fs, Encoding.Default);       /* File.ReadAllLines(@"../../List.txt", Encoding.Default);*/
-                
+
+                string[] input;
                     while (!sr.EndOfStream)
                     {
                     try
                     {
-                        string input_text = sr.ReadLine();
-
-                        Pubs r = new Pubs(input_text,i);
+                        input = sr.ReadLine().Split(';');
+                        string input_text = input[0];
+                        string m = input[1];
+                        string b = input[2];
+                        Pubs r = new Pubs(input_text,i,m,b);
                         i++;
                         pubs.Add(r);
                     }
                     catch { };
                     
+
+                }
+                foreach (Pubs item in pubs)
+                {
+                    List1.Items.Add(item);
                 }
                 sr.Close();
             }
-            foreach (Pubs item in pubs)
-            {
-                List1.Items.Add(item);
-            }
+            
         }
 
         //private void Add_Click(object sender, RoutedEventArgs e)
@@ -101,7 +106,6 @@ namespace PubList
         {
             Pubs a = sender as Pubs;
           
-
         }
 
         private void srch_GotFocus(object sender, RoutedEventArgs e)
@@ -126,12 +130,9 @@ namespace PubList
         private void MenuItem_Delete(object sender, MouseButtonEventArgs e)
         {
             var a = List1.SelectedItem;
-            //if (List1.SelectedIndex == -1)
-            //{
-            //    return;
-            //}
-            pubs.Remove((Pubs)a);
             List1.Items.Remove(a);
+            pubs.Remove((Pubs)a);
+            
 
         }
 
@@ -141,6 +142,11 @@ namespace PubList
         }
 
         private void MenuItem_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void AddDat_Click(object sender, RoutedEventArgs e)
         {
 
         }
