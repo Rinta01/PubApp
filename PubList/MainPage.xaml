@@ -28,10 +28,11 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="№" DisplayMemberBinding="{Binding Path=Number}" Width="50"/>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="180" />
+                        <GridViewColumn Header="№" DisplayMemberBinding="{Binding Path=Number}" Width="40"/>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="150" />
                         <GridViewColumn Header="Metro" DisplayMemberBinding="{Binding Path=Metro}" Width="150" />
-                        <GridViewColumn Header="Visit" DisplayMemberBinding="{Binding Path=vs}" Width="100"/>
+                        <GridViewColumn Header="Av. Price" DisplayMemberBinding="{Binding Path=AVPrice}" Width ="70"/>
+                        <GridViewColumn Header="Visit" DisplayMemberBinding="{Binding Path=vs}" Width="70"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
@@ -53,7 +54,7 @@
                 <Image Source="C:\Users\rinat\OneDrive\Документы\Visual Studio 2017\Projects\PubList\PubList\search.jpg"  RenderTransformOrigin="1.068,1.086" Height="23" Width="46" RenderOptions.BitmapScalingMode="Fant"/>
             </StackPanel>
         </Button>
-        <Button x:Name="Del" Content="Del" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Height="28" Grid.Column="2" Margin="169.667,43.333,0,0" Grid.Row="4"/>
+        <Button x:Name="Del" Content="Del" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Height="28" Grid.Column="2" Margin="169.667,43.333,0,0" Grid.Row="4" Click="Del_Click"/>
         <Button x:Name="ImpT" Height="36" Content="Import to .txt" RenderTransformOrigin="7.724,10.833" Grid.Column="2" Margin="113.333,0,0,53" Grid.Row="2" HorizontalAlignment="Left" Width="114" Click="ImpT_Click" Grid.RowSpan="2" VerticalAlignment="Bottom"/>
         <ComboBox Name="cbox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="103" Grid.Column="1" Margin="0.333,45,0,0">
             <ComboBoxItem>Name</ComboBoxItem>

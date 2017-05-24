@@ -15,6 +15,7 @@ namespace PubList
         public string Metro { get; set; }
         public string Address { get; set; }
         private string loc;
+        public double AvPrice { get; set; }
 
         public string Location
         {
@@ -62,7 +63,17 @@ namespace PubList
             vs = d;
             
         }
-        public Pubs(string Name, string b, string c, string d, List<Positions> e, int f, string g)
+        public Pubs(string Name, string b, string c, string d, int f, string g)
+        {
+            this.Name = Name;
+            Comment = b;
+            Metro = c;
+            Address = d;
+            Number = f;
+            vs = g;
+            
+        }
+        public Pubs(string Name, string b, string c, string d, List<Positions> e, int f, string g, double h)
         {
             this.Name = Name;
             Comment = b;
@@ -71,6 +82,7 @@ namespace PubList
             Cranes = e;
             Number = f;
             vs = g;
+            AvPrice = h;
         }
 
     }

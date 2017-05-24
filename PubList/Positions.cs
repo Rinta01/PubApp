@@ -14,7 +14,8 @@ namespace PubList
         public string Brewery { get; set; }
         public string Sort { get; set; }
         public double Alc { get; set; }
-        public string Bprice { get; set; }
+        public int Bprice { get; set; }
+        
 
 
         public Positions(string a, string b)
@@ -24,10 +25,10 @@ namespace PubList
             Brewery = "";
             Country = "";
             Alc = 0;
-            Bprice = "";
+            Bprice = 0;
         }
 
-        public Positions(string a, string b, string c, string d, double e, string f)
+        public Positions(string a, string b, string c, string d, double e, int f)
         {
             //if (a == null || b == null||c==null||d==null||e==null||f==null)
             //{
@@ -49,7 +50,7 @@ namespace PubList
             Brewery = c;
             Country = "";
             Alc = 0;
-            Bprice = "";
+            Bprice = 0;
            
         }
 
@@ -60,7 +61,7 @@ namespace PubList
             Brewery = c;
             Country = d;
             Alc = 0;
-            Bprice = "";
+            Bprice = 0;
 
         }
         public Positions(string a, string b, string c, string d, double e)
@@ -70,7 +71,7 @@ namespace PubList
             Brewery = c;
             Country = d;
             Alc = e;
-            Bprice = "";
+            Bprice = 0;
         }
     }
 }

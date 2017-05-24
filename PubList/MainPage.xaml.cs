@@ -117,8 +117,6 @@ namespace PubList
             var a = List1.SelectedItem;
             List1.Items.Remove(a);
             pubs.Remove((Pubs)a);
-
-
         }
 
         private void MenuItem_Visited(object sender, MouseButtonEventArgs e)
@@ -200,6 +198,13 @@ namespace PubList
         private void ExpT_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Del_Click(object sender, RoutedEventArgs e)
+        {
+            var a = List1.SelectedItem;
+            List1.Items.Remove(a);
+            pubs.Remove((Pubs)a);
         }
     }
 
