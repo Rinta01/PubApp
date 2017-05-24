@@ -29,7 +29,7 @@ namespace PubList
             InitializeComponent();
             using (FileStream fs = new FileStream("../../List.txt", FileMode.Open, FileAccess.Read))
             {
-                StreamReader sr = new StreamReader(fs, Encoding.Default);       /* File.ReadAllLines(@"../../List.txt", Encoding.Default);*/
+                StreamReader sr = new StreamReader(fs, Encoding.Default); 
 
                 string[] input;
                 while (!sr.EndOfStream)
@@ -114,14 +114,23 @@ namespace PubList
 
         private void MenuItem_Delete(object sender, MouseButtonEventArgs e)
         {
-            var a = List1.SelectedItem;
-            List1.Items.Remove(a);
-            pubs.Remove((Pubs)a);
+            
+            int a = List1.SelectedIndex;
+            List1.Items.RemoveAt(a);
+           
         }
 
         private void MenuItem_Visited(object sender, MouseButtonEventArgs e)
         {
-
+            var a = List1.SelectedItem;
+            foreach (var item in pubs)
+            {
+                if (a.Equals(item))
+                {
+                    item.vs = "yes";
+                }
+            }
+            List1.Items.Refresh();
         }
 
         private void MenuItem_MouseRightButtonDown(object sender, MouseButtonEventArgs e)

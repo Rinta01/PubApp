@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PubList"
         mc:Ignorable="d"
-        Title="Your Publist" Height="395" Width="666">
+        Title="Your Publist" Height="420" Width="666">
     <Grid>
-        <Frame Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
+        <Frame Name="MainFrame" NavigationUIVisibility="Visible"></Frame>
     </Grid>
 </Window>

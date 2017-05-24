@@ -18,22 +18,18 @@ namespace PubList
         
 
 
-        public Positions(string a, string b)
-        {
-            BName = a;
-            Sort = b;
-            Brewery = "";
-            Country = "";
-            Alc = 0;
-            Bprice = 0;
-        }
+        //public Positions(string a, string b)
+        //{
+        //    BName = a;
+        //    Sort = b;
+        //    Brewery = "";
+        //    Country = "";
+        //    Alc = 0;
+        //    Bprice = 0;
+        //}
 
         public Positions(string a, string b, string c, string d, double e, int f)
         {
-            //if (a == null || b == null||c==null||d==null||e==null||f==null)
-            //{
-            //    return;
-            //}
             BName = a;
             Sort = b;
             Brewery = c;
@@ -42,36 +38,14 @@ namespace PubList
             Bprice = f;
         }
 
-        public Positions(string a, string b, string c)
-        {
-           
-            BName = a;
-            Sort = b;
-            Brewery = c;
-            Country = "";
-            Alc = 0;
-            Bprice = 0;
-           
-        }
-
-        public Positions(string a, string b, string c, string d )
-        {     
-            BName = a;
-            Sort = b;
-            Brewery = c;
-            Country = d;
-            Alc = 0;
-            Bprice = 0;
-
-        }
-        public Positions(string a, string b, string c, string d, double e)
+        public Positions(string a, string b, string c, string d, int e)
         {
             BName = a;
             Sort = b;
             Brewery = c;
             Country = d;
-            Alc = e;
-            Bprice = 0;
+            Alc = 0;
+            Bprice = e;
         }
     }
 }

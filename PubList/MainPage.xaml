@@ -24,7 +24,7 @@
             <ColumnDefinition Width="260*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Background="Cornsilk" FontSize="25" HorizontalAlignment="Center" Height="30" FontFamily="Blackadder ITC" TextWrapping="Wrap" Text="My Collection:"  TextAlignment="Center" VerticalAlignment="Center" Width="215" Grid.ColumnSpan="2" Margin="12,10,156.333,34"/>
-        <ListView x:Name="List1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="174" Margin="12,3,108,73" VerticalAlignment="Center" Width="480" Grid.RowSpan="4" SelectionMode="Single" Grid.Row="1">
+        <ListView x:Name="List1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="215" Margin="40,73,136,0" VerticalAlignment="Center" Width="480" Grid.RowSpan="4" SelectionMode="Single">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -56,7 +56,7 @@
         </Button>
         <Button x:Name="Del" Content="Del" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Height="28" Grid.Column="2" Margin="169.667,43.333,0,0" Grid.Row="4" Click="Del_Click"/>
         <Button x:Name="ImpT" Height="36" Content="Import to .txt" RenderTransformOrigin="7.724,10.833" Grid.Column="2" Margin="113.333,0,0,53" Grid.Row="2" HorizontalAlignment="Left" Width="114" Click="ImpT_Click" Grid.RowSpan="2" VerticalAlignment="Bottom"/>
-        <ComboBox Name="cbox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="103" Grid.Column="1" Margin="0.333,45,0,0">
+        <ComboBox Name="cbox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="103" Grid.Column="1" Margin="13.333,45,0,0">
             <ComboBoxItem>Name</ComboBoxItem>
             <ComboBoxItem>Metro</ComboBoxItem>
         </ComboBox>
