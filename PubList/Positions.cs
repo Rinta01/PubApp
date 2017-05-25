@@ -15,18 +15,7 @@ namespace PubList
         public string Sort { get; set; }
         public double Alc { get; set; }
         public int Bprice { get; set; }
-        
 
-
-        //public Positions(string a, string b)
-        //{
-        //    BName = a;
-        //    Sort = b;
-        //    Brewery = "";
-        //    Country = "";
-        //    Alc = 0;
-        //    Bprice = 0;
-        //}
 
         public Positions(string a, string b, string c, string d, double e, int f)
         {
@@ -38,14 +27,20 @@ namespace PubList
             Bprice = f;
         }
 
-        public Positions(string a, string b, string c, string d, int e)
+        //public Positions(string a, string b, string c, string d, int e)
+        //{
+        //    BName = a;
+        //    Sort = b;
+        //    Brewery = c;
+        //    Country = d;
+        //    Alc = 0;
+        //    Bprice = e;
+        //}
+
+        public string PosInfo()
         {
-            BName = a;
-            Sort = b;
-            Brewery = c;
-            Country = d;
-            Alc = 0;
-            Bprice = e;
+            return string.Format("Beer Name:{0},Sort:{1},Brewery:{2},Country:{3},Alc:{4},Price:{5};", BName, Sort, Brewery, Country, Alc, Bprice);
         }
+      
     }
 }

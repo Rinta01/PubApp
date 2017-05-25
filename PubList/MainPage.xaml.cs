@@ -27,61 +27,43 @@ namespace PubList
         public MainPage()
         {
             InitializeComponent();
-            using (FileStream fs = new FileStream("../../List.txt", FileMode.Open, FileAccess.Read))
+            if(File.Exists(".././tpubs.txt") && !(File.ReadAllText(".././tpubs.txt") == ""))
             {
-                StreamReader sr = new StreamReader(fs, Encoding.Default); 
-
-                string[] input;
-                while (!sr.EndOfStream)
+                ExpT.IsEnabled = true;
+            }
+            else
+            {
+                using (FileStream fs = new FileStream("../../List.txt", FileMode.Open, FileAccess.Read))
                 {
-                    try
+                    StreamReader sr = new StreamReader(fs, Encoding.Default);
+
+                    string[] input;
+                    while (!sr.EndOfStream)
                     {
-                        input = sr.ReadLine().Split(';');
-                        string input_text = input[0];
-                        string m = input[1];
-                        string b = input[2];
-                        Pubs r = new Pubs(input_text, i, m, b);
-                        i++;
-                        pubs.Add(r);
+                        try
+                        {
+                            input = sr.ReadLine().Split(';');
+                            string input_text = input[0];
+                            string m = input[1];
+                            string b = input[2];
+                            Pubs r = new Pubs(input_text,m,b,i);
+                            i++;
+                            pubs.Add(r);
+                        }
+                        catch { };
+
+
                     }
-                    catch { };
-
-
+                    foreach (Pubs item in pubs)
+                    {
+                        List1.Items.Add(item);
+                    }
+                    sr.Close();
                 }
-                foreach (Pubs item in pubs)
-                {
-                    List1.Items.Add(item);
-                }
-                sr.Close();
             }
 
         }
 
-        //private void Add_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Pubs p5 = new Pubs { Number = i++, Name = AdditionName.Text};
-        //    pubs.Add(p5);
-        //    if (!(string.IsNullOrEmpty(AdditionName.Text) || string.IsNullOrEmpty(AddMetro.Text)))
-        //    {
-
-        //        List1.Items.Add(p5);
-
-        //         using (FileStream fs = new FileStream("../../List.txt", FileMode.Append , FileAccess.Write))
-        //          //true записывает данные в файл перманентно.
-        //        {
-        //            StreamWriter sw = new StreamWriter(fs, Encoding.Default);
-        //            sw.WriteLine("\n"+p5.Pubinfo()+"\n");
-
-        //            sw.Close();
-
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show(" Введите данные в поля! ");
-        //    }
-
-        //}
         private void Add_Click(object sender, RoutedEventArgs e)
         {
            NavigationService.Navigate(Pages.Addnewitem); ;
@@ -109,7 +91,7 @@ namespace PubList
 
         private void MenuItem_Edit(object sender, MouseButtonEventArgs e)
         {
-
+            NavigationService.Navigate(Pages.Addnewitem);
         }
 
         private void MenuItem_Delete(object sender, MouseButtonEventArgs e)
@@ -186,27 +168,114 @@ namespace PubList
 
         private void ExpD_Click(object sender, RoutedEventArgs e)
         {
-            List1.Items.Clear();
-            using (FileStream fs = new FileStream(@"../../pubs.dat", FileMode.Create, FileAccess.Write))
+            try
             {
-                BinaryFormatter bf = new BinaryFormatter();
-
-                List<Pubs> pb = (List<Pubs>)bf.Deserialize(fs);
-                foreach (Pubs item in pb)
+                if (File.Exists("../../pubs.dat"))
                 {
-                    List1.Items.Add(item);
-                }
-            }
+                    List1.Items.Clear();
+                    FileStream fs = new FileStream(@"../../pubs.dat", FileMode.Open, FileAccess.Read);
 
+
+                    BinaryFormatter bf = new BinaryFormatter();
+
+                    List<Pubs> pb = (List<Pubs>)bf.Deserialize(fs);
+                    foreach (Pubs item in pb)
+                    {
+                        List1.Items.Add(item);
+                    }
+
+                    fs.Close();
+                    MessageBox.Show("Your data was successfully imported from pubs.dat");
+                
+               
+                }
+                else
+                    MessageBox.Show("You need to import any data first.");
+            }
+            catch(Exception exx) { MessageBox.Show(exx.Message); }
         }
         private void ImpT_Click(object sender, RoutedEventArgs e)
         {
+            FileStream fs = new FileStream(@"../../tpubs.txt", FileMode.Create, FileAccess.Write);
+            FileStream ff = new FileStream(@"../../tpos.txt", FileMode.Create, FileAccess.Write);
 
+            StreamWriter sr = new StreamWriter(fs, Encoding.Default);
+            StreamWriter ss = new StreamWriter(fs, Encoding.Default);
+
+
+            foreach (var item in pubs)
+                {
+                    sr.Write(item.Pubinfo());
+
+                foreach (var j in item.Cranes)
+                {
+                    ss.Write(j.PosInfo());
+                }
+                ss.WriteLine(";");
+            }
+            ff.Close();
+            ss.Close();
+            sr.Close();
+            fs.Close();
+            
+            
+            MessageBox.Show("Successfully imported to tpubs.txt");
         }
 
         private void ExpT_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (File.Exists("../../tpubs.txt"))
+                {
+                    List1.Items.Clear();
+                    FileStream fs = new FileStream(@"../../tpubs.txt", FileMode.Open, FileAccess.Read);
+                    FileStream ff = new FileStream(@"../../tpos.txt", FileMode.Open, FileAccess.Read);
 
+                    StreamReader sr = new StreamReader(fs, Encoding.Default);
+                    StreamReader ss = new StreamReader(ff, Encoding.Default);
+                    string sb = "";
+                    string bb = "";
+                    List<Pubs> pb = new List<Pubs>();
+                    List < Positions > lb = new List<Positions>();
+                    while (!sr.EndOfStream)
+                    {
+                        sb += sr.ReadLine();
+                    }
+                    sr.Close();
+                    fs.Close();
+                    while (!ss.EndOfStream)
+                    {
+                        bb += ss.ReadLine();
+                    }
+                    var mbb = bb.Split(',');
+                    var mbo = sb.Split(',');
+                    foreach (var jj in mbb)
+                    {
+                        var MassBb = jj.Split(':');
+                        lb.Add(new Positions(MassBb[1], MassBb[3], MassBb[5], MassBb[7], double.Parse(MassBb[9]), int.Parse(MassBb[11])));
+                    }
+                    
+                    foreach (var item in mbo)
+                    {
+                        var MassBo = item.Split(':');
+                        pb.Add(new Pubs(MassBo[1], MassBo[7], MassBo[3], MassBo[5],lb,i,MassBo[7],double.Parse(MassBo[9])));   
+                    }
+                    
+                    foreach (Pubs item in pb)
+                    {
+                        List1.Items.Add(item);
+                    }
+
+                    fs.Close();
+                    MessageBox.Show("Your data was successfully imported from tpubs.txt");
+                
+                    
+                }
+                else
+                    MessageBox.Show("You need to import any data first.");
+            }
+            catch (Exception exx) { MessageBox.Show(exx.Message); }
         }
 
         private void Del_Click(object sender, RoutedEventArgs e)

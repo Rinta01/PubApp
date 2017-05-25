@@ -28,7 +28,7 @@ namespace PubList
             InitializeComponent();
         }
 
-    private void Metro_GotFocus(object sender, RoutedEventArgs e)
+        private void Metro_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
             if (tb.IsFocused)
@@ -70,14 +70,24 @@ namespace PubList
         private void Nm_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
+            var a = tb.Text;
+            var b = tb.FontWeight;
+            var c = tb.FontStyle;
+
             if (tb.IsFocused)
             {
                 tb.Text = string.Empty;
-                tb.GotFocus -= Nm_GotFocus;
+                //tb.GotFocus -= Nm_GotFocus;
                 tb.FontWeight = FontWeights.Regular;
                 tb.FontStyle = FontStyles.Normal;
+
             }
-            tb.GotFocus += Nm_GotFocus;
+
+
+            //tb.Text = a;
+            //tb.FontWeight = b;
+            //tb.FontStyle = c;
+
         }
 
         private void Crane_GotFocus(object sender, RoutedEventArgs e)
@@ -104,7 +114,7 @@ namespace PubList
                 tb.FontWeight = FontWeights.Regular;
                 tb.FontStyle = FontStyles.Normal;
             }
-            tb.GotFocus += BCountry_GotFocus;      
+            tb.GotFocus += BCountry_GotFocus;
         }
 
         private void AlcV_GotFocus(object sender, RoutedEventArgs e)
@@ -162,24 +172,36 @@ namespace PubList
         {
 
 
-            //try
-            //{
-            if (String.IsNullOrEmpty(Crane.Text) || String.IsNullOrEmpty(cmb.Text))
+            try
             {
-                MessageBox.Show("Please select the beer sort or fill in its name");
-                return;
-            }
-                
+                if (String.IsNullOrEmpty(Crane.Text) || String.IsNullOrEmpty(cmb.Text))
+                {
+                    MessageBox.Show("Please select the beer sort or fill in its name");
+                    return;
+                }
+
                 NCheck(Brewery.Text);
                 NCheck(BPrice.Text);
                 NCheck(BCountry.Text);
-             
 
-                if (String.IsNullOrEmpty(AlcV.Text))
+                //if (String.IsNullOrEmpty(AlcV.Text))
+                //{
+                //    Positions p = new Positions(Crane.Text, cmb.Text, Brewery.Text, BCountry.Text, int.Parse(BPrice.Text));
+
+                //    AvPr.Add(int.Parse(BPrice.Text));
+                //    beer.Add(p);
+                //    LCr.Items.Add(p);
+                //    Crane.Clear();
+                //    cmb.SelectedValue = null; ;
+                //    Brewery.Clear();
+                //    AlcV.Clear();
+                //    BPrice.Clear();
+                //    BCountry.Clear();
+                //}
+
                 {
                     Positions p = new Positions(Crane.Text, cmb.Text, Brewery.Text, BCountry.Text, double.Parse(AlcV.Text), int.Parse(BPrice.Text));
 
-                    AvPr.Add(int.Parse(BPrice.Text));
                     beer.Add(p);
                     LCr.Items.Add(p);
                     Crane.Clear();
@@ -189,52 +211,42 @@ namespace PubList
                     BPrice.Clear();
                     BCountry.Clear();
                 }
-                else
-                {
-                    Positions p = new Positions(Crane.Text, cmb.Text, Brewery.Text, BCountry.Text, int.Parse(BPrice.Text));
-
-                    AvPr.Add(int.Parse(BPrice.Text));
-                    beer.Add(p);
-                    LCr.Items.Add(p);
-                    Crane.Clear();
-                    cmb.SelectedValue = null; ;
-                    Brewery.Clear();
-                    AlcV.Clear();
-                    BPrice.Clear();
-                    BCountry.Clear();
-                }
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void Apply_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrEmpty(Nm.Text) || String.IsNullOrEmpty(Comment.Text) || String.IsNullOrEmpty(Metro.Text) || String.IsNullOrEmpty(Address.Text) || String.IsNullOrEmpty(yn.Text) || beer.Contains(null))
-            {
-                MessageBox.Show("Please fill in all the reqired info.");
-            }
-            else if(beer.Count == 0)
-            {
-                Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text, Address.Text, Pages.MainPage.i, yn.Text);
-                Pages.MainPage.i++;
-                Pages.MainPage.List1.Items.Add(np);
-                Pages.MainPage.List1.Items.Refresh();
-                NavigationService.Navigate(Pages.MainPage);
-                Nm.Clear();
-                Comment.Clear();
-                Address.Clear();
-                yn.SelectedValue = null;
-            }
-            else
-            {
-                Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text,Address.Text, beer, Pages.MainPage.i, yn.Text,Average_Value(AvPr));
-                Pages.MainPage.i++;
-                Pages.MainPage.List1.Items.Add(np);
-                Pages.MainPage.List1.Items.Refresh();
-                NavigationService.Navigate(Pages.MainPage);
-                
-            }
+            try
+            { 
+                //if (String.IsNullOrEmpty(Nm.Text) || String.IsNullOrEmpty(Comment.Text) || String.IsNullOrEmpty(Metro.Text) || String.IsNullOrEmpty(Address.Text) || String.IsNullOrEmpty(yn.Text) || beer.Contains(null))
+                //{
+                //    MessageBox.Show("Please fill in all the reqired info.");
+                //}
+                if (beer.Count == 0)
+                {
+                    Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text, Address.Text, Pages.MainPage.i, yn.Text);
+                    Pages.MainPage.i++;
+                    Pages.MainPage.List1.Items.Add(np);
+                    Pages.MainPage.List1.Items.Refresh();
+                    NavigationService.Navigate(Pages.MainPage);
+                    Nm.Clear();
+                    Comment.Clear();
+                    Address.Clear();
+                    yn.SelectedValue = null;
+                }
+                else
+                {
+                    Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text, Address.Text, beer, Pages.MainPage.i, yn.Text, Average_Value(AvPr));
+                    Pages.MainPage.i++;
+                    Pages.MainPage.List1.Items.Add(np);
+                    Pages.MainPage.List1.Items.Refresh();
+                    NavigationService.Navigate(Pages.MainPage);
+
+                }
+            } catch { MessageBox.Show("Please fill in all the reqired info."); }
         }
+    
 
 
         public double Average_Value(List<int> abc)

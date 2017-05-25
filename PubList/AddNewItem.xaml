@@ -42,7 +42,6 @@
         <TextBox x:Name="Address" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="234.667,9.667,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Address" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="Address_GotFocus" VerticalAlignment="Top" Width="263"/>
         <TextBox x:Name="Comment" GotFocus="Comment_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="8.667,10.333,0,0" Grid.Row="2" TextWrapping="Wrap" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Text="Share some of your thoughts" VerticalAlignment="Top" Width="489"/>
         <TextBox x:Name="Crane" TextWrapping="Wrap" Text="What beverage did you enjoy most?" GotFocus="Crane_GotFocus" Grid.Column="1" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Margin="157.333,9.667,91,16" Grid.Row="3"/>
-        <Button x:Name="BAdd" Content="Add " Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="441.333,9.667,0,0" Grid.Row="3" VerticalAlignment="Top" Width="35" Click="BAdd_Click" RenderTransformOrigin="-0.057,0.624"/>
         <Grid Height="134" Width="379" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -59,15 +58,16 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="BCountry" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="BCountry_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="8.667,9.667,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Country (optional)" VerticalAlignment="Top" Width="160"/>
-        <TextBox x:Name="Brewery" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" HorizontalAlignment="Left" GotFocus="Brewery_GotFocus" Height="37" TextWrapping="Wrap" Text="Brewery (optional)" VerticalAlignment="Top" Width="185" Grid.Column="1" Margin="182.333,11,0,0" Grid.Row="4"/>
-        <TextBox x:Name="AlcV" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="372.333,10,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Alcohol By Volume, % (optional)" VerticalAlignment="Top" Width="104" GotFocus="AlcV_GotFocus"/>
+        <TextBox x:Name="BCountry" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="BCountry_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="8.667,9.667,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Country" VerticalAlignment="Top" Width="160"/>
+        <TextBox x:Name="Brewery" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" HorizontalAlignment="Left" GotFocus="Brewery_GotFocus" Height="37" TextWrapping="Wrap" Text="Brewery" VerticalAlignment="Top" Width="185" Grid.Column="1" Margin="182.333,11,0,0" Grid.Row="4"/>
+        <TextBox x:Name="AlcV" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="372.667,10,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Alcohol By Volume, % " VerticalAlignment="Top" Width="104" GotFocus="AlcV_GotFocus"/>
+        <TextBox x:Name="BPrice" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="BPrice_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="10.667,10.667,0,0" Grid.Row="5" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="158"/>
         <TextBlock Grid.Column="1" FontStyle="Italic" FontWeight="Heavy"  HorizontalAlignment="Left" Height="42" Margin="9.667,56.667,0,0" Grid.Row="5" VerticalAlignment="Top" Width="263" Grid.RowSpan="2"><Run Text="Have you been in this pub yet? "/></TextBlock>
         <ComboBox Name="yn" Grid.Column="1" Margin="231.333,0.333,239.667,31.667" Grid.Row="6">
             <ComboBoxItem>Yes</ComboBoxItem>
             <ComboBoxItem>No</ComboBoxItem>
         </ComboBox>
-        <TextBox x:Name="BPrice" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="BPrice_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="10.667,10.667,0,0" Grid.Row="5" TextWrapping="Wrap" Text="Price (optional)" VerticalAlignment="Top" Width="158"/>
+        <Button x:Name="BAdd" Content="Add " Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="441.333,9.667,0,0" Grid.Row="3" VerticalAlignment="Top" Width="35" Click="BAdd_Click" RenderTransformOrigin="-0.057,0.624"/>
         <Button x:Name="Apply" Content="Add To My Collection" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="359.333,35,0,0" Grid.Row="5" Grid.RowSpan="2" VerticalAlignment="Top" Width="117" Click="Apply_Click"/>
     </Grid>
 </Page>

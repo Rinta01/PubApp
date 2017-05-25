@@ -26,7 +26,13 @@ namespace PubList
                 loc = value; }
         }
 
-        List<Positions> Cranes = new List<Positions>();
+        public List<Positions> Cranes
+        {
+            get { return _cranes; }
+            set {_cranes = value; }
+        }
+
+        List<Positions> _cranes = new List<Positions>();
        
         //private bool v;
 
@@ -50,20 +56,19 @@ namespace PubList
         public string vs { get; set; }
 
 
-        //public string Pubinfo()
-        //{
-        //    return string.Format("{0} :м.{1}", Name, Metro); //string. Format создает строчку ( фича для {0})
-        //}
-
-        public Pubs(string Name, int b, string c, string d)
+        public string Pubinfo()
         {
-            this.Name = Name;
-            Number = b;
+           return string.Format("Name:{0},Metro:{1},Address:{2},Comment:{3},Visit:{4},Average Price:{5},", Name, Metro,Address, Comment, vs,AvPrice); //string. Format создает строчку ( фича для {0})
+        }
+
+        public Pubs(string a, string c, string d, int f)
+        {
+            Name = a;
             Metro = c;
             vs = d;
-            
+            Number = f;
         }
-        public Pubs(string Name, string b, string c, string d, int f, string g)
+            public Pubs(string Name, string b, string c, string d, int f, string g)
         {
             this.Name = Name;
             Comment = b;
