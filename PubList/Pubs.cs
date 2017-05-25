@@ -58,7 +58,7 @@ namespace PubList
 
         public string Pubinfo()
         {
-           return string.Format("{0},{1},{2},{3},{4},{5}", Name, Metro,Address, Comment, vs,AvPrice); //string. Format создает строчку ( фича для {0})
+           return string.Format("{0},{1},{2},{3},{4},{5};", Name, Metro,Address, Comment, vs,AvPrice); //string. Format создает строчку ( фича для {0})
         }
 
         public Pubs(string a, string c, string d, int f)

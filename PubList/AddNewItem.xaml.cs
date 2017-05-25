@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -172,12 +173,16 @@ namespace PubList
                     MessageBox.Show("Please select the beer sort or fill in its name");
                     return;
                 }
+                if (Regex.IsMatch(AlcV.Text, @"^\d+$")|| Regex.IsMatch(BPrice.Text, @"^\d+$"))
+                {
+                    MessageBox.Show("Check if you entered all the info correctly (some of it is numeric)");
+                    return;
+                }
 
                 NCheck(Brewery.Text);
                 NCheck(BPrice.Text);
                 NCheck(BCountry.Text);
-
-                {
+                
                     Positions p = new Positions(Crane.Text, cmb.Text, Brewery.Text, BCountry.Text, double.Parse(AlcV.Text), int.Parse(BPrice.Text));
 
                     beer.Add(p);
@@ -189,7 +194,7 @@ namespace PubList
                     BPrice.Clear();
                     BCountry.Clear();
                     AvPr.Add(int.Parse(BPrice.Text));
-                }
+                
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -239,9 +244,10 @@ namespace PubList
         public double Average_Value(List<int> abc)
         {
             List<int> bra = new List<int>();
-            //if (bra.Count == 1)
-            //    return bra.ElementAt(0);
-            return bra.Average();            
+            if (bra.Count == 1)
+                return bra.ElementAt(0);
+            return bra.Average();
+
         }
     }
    

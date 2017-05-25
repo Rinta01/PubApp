@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PubList"
       mc:Ignorable="d"
-      d:DesignHeight="395" 
-      Title="Add New Pub to Your Collection!" Background="Beige" Width="700">
+      d:DesignHeight="395"
+      Title="Add New Pub to Your Collection!" Background="Beige" Width="1134.683" WindowWidth="1118">
 
     <Grid Margin="0,0,0,-0.333">
         <Grid.RowDefinitions>
@@ -26,7 +26,7 @@
         <TextBlock Text="Location" TextAlignment="Center" FontSize="18" FontStretch="Expanded"  Grid.Column="0" Grid.Row="1" Width="auto" FontWeight="Bold" Height="auto" Margin="0,0.667,6,47.333" Grid.RowSpan="2"/>
         <TextBlock Text="Comment" TextAlignment="Center" FontSize="18" FontStretch="Expanded"  Grid.Column="0" Grid.Row="2" Width="auto" FontWeight="Bold" Height="auto" Margin="0,0.333,6,0.333"/>
         <TextBlock TextAlignment="Center" Text="Cranes" FontSize="18" FontStretch="Expanded"  Grid.Column="0" Grid.Row="2" Width="auto" FontWeight="Bold" Height="auto" Margin="10,56.333,9.667,49" Grid.RowSpan="3"/>
-        <ComboBox x:Name="cmb" Margin="27.333,9.667,389,16" Grid.Row="3" Grid.Column="1">
+        <ComboBox x:Name="cmb" Margin="283.667,9.667,425.333,16" Grid.Row="3" Grid.Column="1">
             <ComboBoxItem>Stout</ComboBoxItem>
             <ComboBoxItem>Ale</ComboBoxItem>
             <ComboBoxItem>IPA</ComboBoxItem>
@@ -41,33 +41,37 @@
         <TextBox x:Name="Metro" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Metro Station" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" VerticalAlignment="Top" Width="196" Grid.Column="1" Margin="8.667,10.667,0,0" Grid.Row="1" GotFocus="Metro_GotFocus"/>
         <TextBox x:Name="Address" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="234.667,9.667,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Address" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="Address_GotFocus" VerticalAlignment="Top" Width="263"/>
         <TextBox x:Name="Comment" GotFocus="Comment_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="8.667,10.333,0,0" Grid.Row="2" TextWrapping="Wrap" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Text="Share some of your thoughts" VerticalAlignment="Top" Width="489"/>
-        <TextBox x:Name="Crane" TextWrapping="Wrap" Text="What beverage did you enjoy most?" GotFocus="Crane_GotFocus" Grid.Column="1" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Margin="157.333,9.667,91,16" Grid.Row="3"/>
+        <TextBox x:Name="Crane" TextWrapping="Wrap" Text="What beverage did you enjoy most?" GotFocus="Crane_GotFocus" Grid.Column="1" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Margin="461.667,9.667,69.333,16" Grid.Row="3"/>
         <Grid Height="134" Width="379" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
         </Grid>
-        <ListView Name="LCr" HorizontalAlignment="Left" Height="129" Grid.RowSpan="3" VerticalAlignment="Top" Width="160" Margin="10,8,0,0" Grid.Row="4" Grid.ColumnSpan="2">
+        <ListView Name="LCr" HorizontalAlignment="Left" Height="129" Grid.RowSpan="3" VerticalAlignment="Top" Width="512" Margin="10,8,0,0" Grid.Row="4" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn Header="Sort" DisplayMemberBinding="{Binding Path=Sort}" Width="67"/>
                         <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=BName}" Width="90"/>
+                        <GridViewColumn Header="Country" DisplayMemberBinding="{Binding Path=Country}" Width="90"/>
+                        <GridViewColumn Header="Brewery" DisplayMemberBinding="{Binding Path=Brewery}" Width="90"/>
+                        <GridViewColumn Header="Alc,%" DisplayMemberBinding="{Binding Path=Alc}" Width="90"/>
+                        <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path=BPrice}" Width="90"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="BCountry" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="BCountry_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="8.667,9.667,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Country" VerticalAlignment="Top" Width="160"/>
-        <TextBox x:Name="Brewery" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" HorizontalAlignment="Left" GotFocus="Brewery_GotFocus" Height="37" TextWrapping="Wrap" Text="Brewery" VerticalAlignment="Top" Width="185" Grid.Column="1" Margin="182.333,11,0,0" Grid.Row="4"/>
-        <TextBox x:Name="AlcV" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="372.667,10,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Alcohol By Volume, % " VerticalAlignment="Top" Width="104" GotFocus="AlcV_GotFocus"/>
-        <TextBox x:Name="BPrice" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="BPrice_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="10.667,10.667,0,0" Grid.Row="5" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="158"/>
-        <TextBlock Grid.Column="1" FontStyle="Italic" FontWeight="Heavy"  HorizontalAlignment="Left" Height="42" Margin="9.667,56.667,0,0" Grid.Row="5" VerticalAlignment="Top" Width="263" Grid.RowSpan="2"><Run Text="Have you been in this pub yet? "/></TextBlock>
-        <ComboBox Name="yn" Grid.Column="1" Margin="231.333,0.333,239.667,31.667" Grid.Row="6">
-            <ComboBoxItem>Yes</ComboBoxItem>
-            <ComboBoxItem>No</ComboBoxItem>
+        <TextBox x:Name="BCountry" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="BCountry_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="283.667,8,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Country" VerticalAlignment="Top" Width="160"/>
+        <TextBox x:Name="Brewery" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" HorizontalAlignment="Left" GotFocus="Brewery_GotFocus" Height="37" TextWrapping="Wrap" Text="Brewery" VerticalAlignment="Top" Width="185" Grid.Column="1" Margin="461.667,11,0,0" Grid.Row="4"/>
+        <TextBox x:Name="AlcV" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="676.667,10,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Alcohol By Volume, % " VerticalAlignment="Top" Width="104" GotFocus="AlcV_GotFocus" RenderTransformOrigin="1.09,0.423"/>
+        <TextBox x:Name="BPrice" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="BPrice_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="549.667,10,0,0" Grid.Row="5" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="158"/>
+        <TextBlock Grid.Column="1" FontStyle="Italic" FontWeight="Heavy"  HorizontalAlignment="Left" Height="42" Margin="502.667,44,0,0" VerticalAlignment="Top" Width="263" Grid.RowSpan="2"><Run Text="Have you been in this pub yet? "/></TextBlock>
+        <ComboBox Name="yn" Grid.Column="1" Margin="715.667,44,47.333,47.667" Grid.RowSpan="2">
+            <ComboBoxItem>yes</ComboBoxItem>
+            <ComboBoxItem>no</ComboBoxItem>
         </ComboBox>
-        <Button x:Name="BAdd" Content="Add " Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="441.333,9.667,0,0" Grid.Row="3" VerticalAlignment="Top" Width="35" Click="BAdd_Click" RenderTransformOrigin="-0.057,0.624"/>
-        <Button x:Name="Apply" Content="Add To My Collection" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="359.333,35,0,0" Grid.Row="5" Grid.RowSpan="2" VerticalAlignment="Top" Width="117" Click="Apply_Click"/>
+        <Button x:Name="BAdd" Content="Add " Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="804.667,9.667,0,0" Grid.Row="3" VerticalAlignment="Top" Width="35" Click="BAdd_Click" RenderTransformOrigin="-0.057,0.624"/>
+        <Button x:Name="Apply" Content="Add To My Collection" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="722.667,17,0,0" Grid.Row="5" Grid.RowSpan="2" VerticalAlignment="Top" Width="117" Click="Apply_Click"/>
     </Grid>
 </Page>

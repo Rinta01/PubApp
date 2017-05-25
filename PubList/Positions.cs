@@ -39,7 +39,7 @@ namespace PubList
 
         public string PosInfo()
         {
-            return string.Format("{0},{1},{2},{3},{4},{5}", BName, Sort, Brewery, Country, Alc, Bprice);
+            return string.Format("{0},{1},{2},{3},{4},{5};", BName, Sort, Brewery, Country, Alc, Bprice);
         }
       
     }

@@ -27,7 +27,7 @@ namespace PubList
         public MainPage()
         {
             InitializeComponent();
-            if(File.Exists(@".././tpubs.txt") && new FileInfo(@".././tpubs.txt").Length == 0)
+            if (File.Exists(@".././tpubs.txt") && new FileInfo(@".././tpubs.txt").Length == 0)
             {
                 if (File.Exists("../../pubs.dat"))
                 {
@@ -64,8 +64,8 @@ namespace PubList
                         try
                         {
                             input = sr.ReadLine().Split(';');
-                       
-                            Pubs r = new Pubs(input[0],input[3],input[1],input[2],i,input[4],double.Parse(input[5]));
+
+                            Pubs r = new Pubs(input[0], input[3], input[1], input[2], i, input[4], double.Parse(input[5]));
                             i++;
                             pubs.Add(r);
                         }
@@ -90,7 +90,7 @@ namespace PubList
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-           NavigationService.Navigate(Pages.Addnewitem); ;
+            NavigationService.Navigate(Pages.Addnewitem); ;
         }
 
         private void Randomize_Click(object sender, RoutedEventArgs e)
@@ -135,9 +135,9 @@ namespace PubList
                         else MessageBox.Show("No such items were found.");
                     }
                 }
-                
 
-                if (a=="Metro")
+
+                if (a == "Metro")
                 {
                     foreach (Pubs i in pubs)
                     {
@@ -149,7 +149,7 @@ namespace PubList
                         else MessageBox.Show("No such items were found.");
                     }
                 }
-                
+
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -186,13 +186,13 @@ namespace PubList
 
                     fs.Close();
                     MessageBox.Show("Your data was successfully imported from pubs.dat");
-                
-               
+
+
                 }
                 else
                     MessageBox.Show("You need to import any data first.");
             }
-            catch(Exception exx) { MessageBox.Show(exx.Message); }
+            catch (Exception exx) { MessageBox.Show(exx.Message); }
         }
         private void ImpT_Click(object sender, RoutedEventArgs e)
         {
@@ -223,82 +223,85 @@ namespace PubList
 
             MessageBox.Show("Successfully imported to tpubs.txt");
         }
-            
-        
+
+
         private void ExpT_Click(object sender, RoutedEventArgs e)
         {
             //try
             //{
-                if (File.Exists("../../tpubs.txt"))
+            if (File.Exists("../../tpubs.txt"))
+            {
+                List1.Items.Clear();
+                FileStream fs = new FileStream(@"../../tpubs.txt", FileMode.Open, FileAccess.Read);
+                FileStream ff = new FileStream(@"../../tpos.txt", FileMode.Open, FileAccess.Read);
+
+                StreamReader sr = new StreamReader(fs, Encoding.Default);
+                StreamReader ss = new StreamReader(ff, Encoding.Default);
+                string sb = "";
+                string bb = "";
+                List<Pubs> pb = new List<Pubs>();
+                List<Positions> lb = new List<Positions>();
+                while (!sr.EndOfStream)
                 {
-                    List1.Items.Clear();
-                    FileStream fs = new FileStream(@"../../tpubs.txt", FileMode.Open, FileAccess.Read);
-                    FileStream ff = new FileStream(@"../../tpos.txt", FileMode.Open, FileAccess.Read);
+                    sb += sr.ReadLine();
+                }
+                while (!ss.EndOfStream)
+                {
+                    bb += ss.ReadLine();
+                }
+                var mbo = sb.Split(';');
+                var mbb = bb.Split(';');
 
-                    StreamReader sr = new StreamReader(fs, Encoding.Default);
-                    StreamReader ss = new StreamReader(ff, Encoding.Default);
-                    string sb = "";
-                    string bb = "";
-                    List<Pubs> pb = new List<Pubs>();
-                    List < Positions > lb = new List<Positions>();
-                    while (!sr.EndOfStream)
+                sr.Close();
+                fs.Close();
+                if (File.ReadAllText("../../tpos.txt") == "")
+                {
+
+                    foreach (var item in mbo)
                     {
-                        sb += sr.ReadLine();
+
+                        var MassBo = item.Split(',');
+                        if (item == null)
+                            break;
+                        pb.Add(new Pubs(MassBo[0], MassBo[3], MassBo[1], MassBo[2], lb, i, MassBo[4], double.Parse(MassBo[5])));
                     }
-                    while (!ss.EndOfStream)
+
+                    foreach (Pubs item in pb)
                     {
-                        bb += ss.ReadLine();
+                        List1.Items.Add(item);
                     }
-                    var mbb = bb.Split(';');
-                    var mbo = sb.Split(';');
-                 
-                    sr.Close();
                     fs.Close();
-                    if (File.ReadAllText("../../tpos.txt") == "")
-                    {
-
-                        foreach (var item in mbo)
-                        {
-                            var MassBo = item.Split(',');
-                            pb.Add(new Pubs(MassBo[0], MassBo[3], MassBo[1], MassBo[2], lb, i, MassBo[4], double.Parse(MassBo[5])));
-                        }
-
-                        foreach (Pubs item in pb)
-                        {
-                            List1.Items.Add(item);
-                        }
-                        fs.Close();
-                        MessageBox.Show("Your data was successfully imported from tpubs.txt (beer list not incl.)");
-                    }
-                    else
-                    {
-
-                        foreach (var jj in mbb)
-                        {
-                            var MassBb = jj.Split(',');
-                        if (MassBb.Length < 11)
-                        { break; }
-                            lb.Add(new Positions(MassBb[1], MassBb[3], MassBb[5], MassBb[7], double.Parse(MassBb[9]), int.Parse(MassBb[11])));
-                        }
-
-                        foreach (var item in mbo)
-                        {
-                            var MassBo = item.Split(',');
-                            pb.Add(new Pubs(MassBo[1], MassBo[7], MassBo[3], MassBo[5], lb, i, MassBo[7], double.Parse(MassBo[9])));
-                        }
-
-                        foreach (Pubs item in pb)
-                        {
-                            List1.Items.Add(item);
-                        }
-
-                        fs.Close();
-                        MessageBox.Show("Your data was successfully imported from tpubs.txt");
-
-                    }
+                    MessageBox.Show("Your data was successfully imported from tpubs.txt (beer list not incl.)");
                 }
                 else
-                    MessageBox.Show("You need to import any data first.");
+                {
+
+                    foreach (var jj in mbb)
+                    {
+                        var MassBb = jj.Split(',');
+                        if (MassBb.Length < 11)
+                        { break; }
+                        lb.Add(new Positions(MassBb[1], MassBb[3], MassBb[5], MassBb[7], double.Parse(MassBb[9]), int.Parse(MassBb[11])));
+                    }
+
+                    foreach (var item in mbo)
+                    {
+                        var MassBo = item.Split(',');
+                        pb.Add(new Pubs(MassBo[1], MassBo[7], MassBo[3], MassBo[5], lb, i, MassBo[7], double.Parse(MassBo[9])));
+                    }
+
+                    foreach (Pubs item in pb)
+                    {
+                        List1.Items.Add(item);
+                    }
+
+                    fs.Close();
+                    MessageBox.Show("Your data was successfully imported from tpubs.txt");
+
+                }
+            }
+            else
+                MessageBox.Show("You need to import any data first.");
             //}
             //catch (Exception exx) { MessageBox.Show(exx.Message); }
         }
@@ -336,11 +339,6 @@ namespace PubList
                 }
             }
 
-        }
-
-        private void Edit_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(Pages.EditPage);
         }
     }
 }
