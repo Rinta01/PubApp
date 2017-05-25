@@ -58,7 +58,7 @@ namespace PubList
 
         public string Pubinfo()
         {
-           return string.Format("Name:{0},Metro:{1},Address:{2},Comment:{3},Visit:{4},Average Price:{5},", Name, Metro,Address, Comment, vs,AvPrice); //string. Format создает строчку ( фича для {0})
+           return string.Format("{0},{1},{2},{3},{4},{5}", Name, Metro,Address, Comment, vs,AvPrice); //string. Format создает строчку ( фича для {0})
         }
 
         public Pubs(string a, string c, string d, int f)
@@ -78,6 +78,17 @@ namespace PubList
             vs = g;
             
         }
+        public Pubs(string Name, string b, string c, string d, int f, string g, double h)
+        {
+            this.Name = Name;
+            Comment = b;
+            Metro = c;
+            Address = d;
+            Number = f;
+            vs = g;
+            AvPrice = h;
+        }
+
         public Pubs(string Name, string b, string c, string d, List<Positions> e, int f, string g, double h)
         {
             this.Name = Name;

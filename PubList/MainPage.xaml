@@ -31,37 +31,33 @@
                         <GridViewColumn Header="№" DisplayMemberBinding="{Binding Path=Number}" Width="40"/>
                         <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="150" />
                         <GridViewColumn Header="Metro" DisplayMemberBinding="{Binding Path=Metro}" Width="150" />
-                        <GridViewColumn Header="Av. Price" DisplayMemberBinding="{Binding Path=AVPrice}" Width ="70"/>
+                        <GridViewColumn Header="Av. Price" DisplayMemberBinding="{Binding Path=AvPrice}" Width ="70"/>
                         <GridViewColumn Header="Visit" DisplayMemberBinding="{Binding Path=vs}" Width="70"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
-            <ListView.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Edit" MouseRightButtonDown="MenuItem_Edit"/>
-                    <MenuItem Header="Delete" MouseRightButtonDown="MenuItem_Delete"/>
-                    <MenuItem Header="Mark As Visited" MouseRightButtonDown="MenuItem_Visited"/>
-                </ContextMenu>
-            </ListView.ContextMenu>
         </ListView>
         <TextBlock x:Name="Reveal" FontFamily="Blackadder ITC" Background ="Cornsilk"  HorizontalAlignment="Left" Height="45" Grid.Row="4" TextWrapping="Wrap" Margin="12,13.667,0,14.333" FontSize="25" Text="Where to go today?"  TextAlignment="Center" VerticalAlignment="Center" Width="185" RenderTransformOrigin="0.441,0.51"/>
         <Button x:Name="Randomize" Content="???" Height="30" Margin="202,22.667,145.333,0" Grid.Row="4" VerticalAlignment="Top" Click="Randomize_Click" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="Adding"  FontFamily="Blackadder ITC" Background= "Cornsilk" HorizontalAlignment="Left" Height="45" Margin="110.333,13.667,0,0" Grid.Row="4" TextWrapping="Wrap" FontSize="20" TextAlignment="Left"  VerticalAlignment="Top" Width="165" Grid.ColumnSpan="2" Grid.Column="1"><Run Text="    Add new /"/><LineBreak/><Run/><Run Text="                      /Delete pub"/></TextBlock>
-        <Button x:Name="Add" Content="Add" HorizontalAlignment="Left" Height="30" Margin="131.667,13.333,0,0" Grid.Row="4" VerticalAlignment="Top" Width="38" Grid.Column="2" Click = "Add_Click" RenderTransformOrigin="0.352,-1.053" />
+        <TextBlock x:Name="Adding"  FontFamily="Blackadder ITC" Background= "Cornsilk" HorizontalAlignment="Left" Height="54" Margin="41.333,12,0,0" Grid.Row="4" TextWrapping="Wrap" FontSize="20" TextAlignment="Left"  VerticalAlignment="Top" Width="165" Grid.ColumnSpan="2" Grid.Column="1"><Run Text="    Add new /"/><LineBreak/><Run/><Run Text="                      /Delete pub"/></TextBlock>
+        <Button x:Name="Add" Content="Add" HorizontalAlignment="Left" Height="30" Margin="29.333,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="38" Grid.Column="2" Click = "Add_Click" RenderTransformOrigin="0.352,-1.053" />
         <TextBox x:Name="srch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Grid.Column="1" Margin="110.333,45,108,0" Grid.ColumnSpan="2" Text="Search" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="srch_GotFocus"/>
         <Button Click="Whr_Click" x:Name="Whr" HorizontalAlignment="Left" VerticalAlignment="Top" Width="33" Grid.Column="2" Margin="113.667,45,0,0" Height="23">
             <StackPanel>
                 <Image Source="C:\Users\rinat\OneDrive\Документы\Visual Studio 2017\Projects\PubList\PubList\search.jpg"  RenderTransformOrigin="1.068,1.086" Height="23" Width="46" RenderOptions.BitmapScalingMode="Fant"/>
             </StackPanel>
         </Button>
-        <Button x:Name="Del" Content="Del" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Height="28" Grid.Column="2" Margin="169.667,43.333,0,0" Grid.Row="4" Click="Del_Click"/>
-        <Button x:Name="ImpT" Height="36" Content="Import to .txt" RenderTransformOrigin="7.724,10.833" Grid.Column="2" Margin="113.333,0,0,53" Grid.Row="2" HorizontalAlignment="Left" Width="114" Click="ImpT_Click" Grid.RowSpan="2" VerticalAlignment="Bottom"/>
+        <Button x:Name="Del" Content="Del" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" Height="28" Grid.Column="2" Margin="29.333,46,0,0" Grid.Row="4" Click="Del_Click"/>
+        <Button x:Name="ImpT" Height="36" Content="Import to .txt" RenderTransformOrigin="7.724,10.833" Grid.Column="2" Margin="113.333,0,0,43" Grid.Row="3" HorizontalAlignment="Left" Width="114" Click="ImpT_Click" VerticalAlignment="Bottom"/>
         <ComboBox Name="cbox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="103" Grid.Column="1" Margin="13.333,45,0,0">
             <ComboBoxItem>Name</ComboBoxItem>
             <ComboBoxItem>Metro</ComboBoxItem>
         </ComboBox>
-        <Button Name="ImpD" Content="Import to .dat" Grid.Column="2" HorizontalAlignment="Left" Height="36" Margin="113.333,3.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="114" Click="ImpD_Click"/>
-        <Button Name="ExpD" Height="36" Content="Export from .dat" VerticalAlignment="Top" Grid.Column="2" Margin="113.667,44,8,0" Grid.Row="1"  Grid.RowSpan="2" Click="ExpD_Click"/>
-        <Button Name="ExpT" Content="Export from .txt" Height="36" Grid.Column="2" HorizontalAlignment="Left" Margin="113.333,31.333,0,0" Grid.Row="3" VerticalAlignment="Top" Width="114" Click="ExpT_Click"/>
+        <Button Name="ImpD" Content="Import to .dat" Grid.Column="2" HorizontalAlignment="Left" Height="36" Margin="113.333,73,0,0" VerticalAlignment="Top" Width="114" Click="ImpD_Click" Grid.RowSpan="2"/>
+        <Button Name="ExpD" Height="36" Content="Export from .dat" VerticalAlignment="Top" Grid.Column="2" Margin="113.333,32.333,8,0" Grid.Row="1"  Grid.RowSpan="2" Click="ExpD_Click"/>
+        <Button Name="ExpT" Content="Export from .txt" Height="36" Grid.Column="2" HorizontalAlignment="Left" Margin="113.333,43.333,0,0" Grid.Row="3" VerticalAlignment="Top" Width="114" Click="ExpT_Click"/>
+        <Button Name="Edit"  Content="Edit item" Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="113.333,10.333,0,0" Grid.Row="2" VerticalAlignment="Top" Width="114" Click="Edit_Click"/>
+        <Button Name="Been" Content="I've been there" Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="94.333,12,0,0" Grid.Row="4" VerticalAlignment="Top" Width="133" Click="Been_Click"/>
+        <Button Name="Nbeen" Content="I haven't been there yet" Grid.Column="2" HorizontalAlignment="Left" Height="21" Margin="94.333,53,0,0" Grid.Row="4" VerticalAlignment="Top" Width="133" Click="Nbeen_Click"/>
     </Grid>
 </Page>

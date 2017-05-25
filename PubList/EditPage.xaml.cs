@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,18 +16,23 @@ using System.Windows.Shapes;
 namespace PubList
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для EditPage.xaml
     /// </summary>
-    /// 
-    public partial class MainWindow : Window
+    public partial class EditPage : Page
     {
-        public MainWindow()
+        public EditPage()
         {
             InitializeComponent();
-            MainFrame.Navigate(Pages.MainPage); 
         }
 
+        private void EApply_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EBAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
-
-

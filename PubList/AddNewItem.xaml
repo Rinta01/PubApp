@@ -6,9 +6,9 @@
       xmlns:local="clr-namespace:PubList"
       mc:Ignorable="d"
       d:DesignHeight="395" 
-      Title="Add New Pub to Your Collection!" Background="Beige" Width="690">
+      Title="Add New Pub to Your Collection!" Background="Beige" Width="700">
 
-    <Grid Margin="0,0,0.333,-0.333">
+    <Grid Margin="0,0,0,-0.333">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>

@@ -160,13 +160,6 @@ namespace PubList
             if (String.IsNullOrEmpty(a))
                 a = "-";
         }
-        //public void DCheck(double a)
-        //{
-        //    if(a == 0)
-        //    {
-
-        //    }
-        //}
 
         private void BAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -184,21 +177,6 @@ namespace PubList
                 NCheck(BPrice.Text);
                 NCheck(BCountry.Text);
 
-                //if (String.IsNullOrEmpty(AlcV.Text))
-                //{
-                //    Positions p = new Positions(Crane.Text, cmb.Text, Brewery.Text, BCountry.Text, int.Parse(BPrice.Text));
-
-                //    AvPr.Add(int.Parse(BPrice.Text));
-                //    beer.Add(p);
-                //    LCr.Items.Add(p);
-                //    Crane.Clear();
-                //    cmb.SelectedValue = null; ;
-                //    Brewery.Clear();
-                //    AlcV.Clear();
-                //    BPrice.Clear();
-                //    BCountry.Clear();
-                //}
-
                 {
                     Positions p = new Positions(Crane.Text, cmb.Text, Brewery.Text, BCountry.Text, double.Parse(AlcV.Text), int.Parse(BPrice.Text));
 
@@ -210,6 +188,7 @@ namespace PubList
                     AlcV.Clear();
                     BPrice.Clear();
                     BCountry.Clear();
+                    AvPr.Add(int.Parse(BPrice.Text));
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -217,20 +196,22 @@ namespace PubList
 
         private void Apply_Click(object sender, RoutedEventArgs e)
         {
-            try
-            { 
-                //if (String.IsNullOrEmpty(Nm.Text) || String.IsNullOrEmpty(Comment.Text) || String.IsNullOrEmpty(Metro.Text) || String.IsNullOrEmpty(Address.Text) || String.IsNullOrEmpty(yn.Text) || beer.Contains(null))
-                //{
-                //    MessageBox.Show("Please fill in all the reqired info.");
-                //}
-                if (beer.Count == 0)
+            //try
+            //{
+                if (String.IsNullOrEmpty(Nm.Text) || String.IsNullOrEmpty(Comment.Text) || String.IsNullOrEmpty(Metro.Text) || String.IsNullOrEmpty(Address.Text) || String.IsNullOrEmpty(yn.Text) || beer.Contains(null))
                 {
-                    Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text, Address.Text, Pages.MainPage.i, yn.Text);
+                    MessageBox.Show("Please fill in all the reqired info.");
+                }
+               else if (beer.Count == 0)
+                {
+                
+                Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text, Address.Text, Pages.MainPage.i, yn.Text);
                     Pages.MainPage.i++;
                     Pages.MainPage.List1.Items.Add(np);
                     Pages.MainPage.List1.Items.Refresh();
                     NavigationService.Navigate(Pages.MainPage);
                     Nm.Clear();
+                    Metro.Clear();
                     Comment.Clear();
                     Address.Clear();
                     yn.SelectedValue = null;
@@ -242,9 +223,15 @@ namespace PubList
                     Pages.MainPage.List1.Items.Add(np);
                     Pages.MainPage.List1.Items.Refresh();
                     NavigationService.Navigate(Pages.MainPage);
+                    Nm.Clear();
+                    Metro.Clear();
+                    Comment.Clear();
+                    Address.Clear();
+                    yn.SelectedValue = null;
 
                 }
-            } catch { MessageBox.Show("Please fill in all the reqired info."); }
+            //}
+            //catch (Exception ee){ MessageBox.Show(ee.Message); }
         }
     
 
@@ -252,12 +239,9 @@ namespace PubList
         public double Average_Value(List<int> abc)
         {
             List<int> bra = new List<int>();
+            //if (bra.Count == 1)
+            //    return bra.ElementAt(0);
             return bra.Average();            
-        }
-
-        private void AlcV_GotFocus_1(object sender, RoutedEventArgs e)
-        {
-
         }
     }
    

@@ -27,9 +27,30 @@ namespace PubList
         public MainPage()
         {
             InitializeComponent();
-            if(File.Exists(".././tpubs.txt") && !(File.ReadAllText(".././tpubs.txt") == ""))
+            if(File.Exists(@".././tpubs.txt") && new FileInfo(@".././tpubs.txt").Length == 0)
             {
-                ExpT.IsEnabled = true;
+                if (File.Exists("../../pubs.dat"))
+                {
+                    List1.Items.Clear();
+                    FileStream fs = new FileStream(@"../../pubs.dat", FileMode.Open, FileAccess.Read);
+
+
+                    BinaryFormatter bf = new BinaryFormatter();
+
+                    List<Pubs> pb = (List<Pubs>)bf.Deserialize(fs);
+                    foreach (Pubs item in pb)
+                    {
+                        List1.Items.Add(item);
+                    }
+
+                    fs.Close();
+                    MessageBox.Show("Your data was successfully imported from pubs.dat");
+
+
+                }
+                else
+                    MessageBox.Show("You need to import any data first.");
+
             }
             else
             {
@@ -43,10 +64,8 @@ namespace PubList
                         try
                         {
                             input = sr.ReadLine().Split(';');
-                            string input_text = input[0];
-                            string m = input[1];
-                            string b = input[2];
-                            Pubs r = new Pubs(input_text,m,b,i);
+                       
+                            Pubs r = new Pubs(input[0],input[3],input[1],input[2],i,input[4],double.Parse(input[5]));
                             i++;
                             pubs.Add(r);
                         }
@@ -62,6 +81,11 @@ namespace PubList
                 }
             }
 
+        }
+
+        private void Some_Method() //this method is called
+        {
+            ExpD_Click(new object(), new RoutedEventArgs());
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -89,32 +113,6 @@ namespace PubList
             tb.GotFocus += srch_GotFocus;
         }
 
-        private void MenuItem_Edit(object sender, MouseButtonEventArgs e)
-        {
-            NavigationService.Navigate(Pages.Addnewitem);
-        }
-
-        private void MenuItem_Delete(object sender, MouseButtonEventArgs e)
-        {
-            
-            int a = List1.SelectedIndex;
-            List1.Items.RemoveAt(a);
-           
-        }
-
-        private void MenuItem_Visited(object sender, MouseButtonEventArgs e)
-        {
-            var a = List1.SelectedItem;
-            foreach (var item in pubs)
-            {
-                if (a.Equals(item))
-                {
-                    item.vs = "yes";
-                }
-            }
-            List1.Items.Refresh();
-        }
-
         private void MenuItem_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
 
@@ -128,28 +126,30 @@ namespace PubList
                 {
                     foreach (Pubs item in pubs)
                     {
-                        if (srch.Text == item.Name)
+                        if (srch.Text.ToUpper() == item.Name.ToUpper())
                         {
                             List1.Items.Clear();
                             List1.Items.Add(item);
 
                         }
+                        else MessageBox.Show("No such items were found.");
                     }
                 }
-                else MessageBox.Show("No such items were found.");
+                
 
                 if (a=="Metro")
                 {
                     foreach (Pubs i in pubs)
                     {
-                        if (srch.Text == i.Metro)
+                        if (srch.Text.ToUpper() == i.Metro.ToUpper())
                         {
                             List1.Items.Clear();
                             List1.Items.Add(i);
                         }
+                        else MessageBox.Show("No such items were found.");
                     }
                 }
-                else MessageBox.Show("No such items were found.");
+                
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -199,33 +199,36 @@ namespace PubList
             FileStream fs = new FileStream(@"../../tpubs.txt", FileMode.Create, FileAccess.Write);
             FileStream ff = new FileStream(@"../../tpos.txt", FileMode.Create, FileAccess.Write);
 
-            StreamWriter sr = new StreamWriter(fs, Encoding.Default);
-            StreamWriter ss = new StreamWriter(fs, Encoding.Default);
+            using (StreamWriter sr = new StreamWriter(fs, Encoding.Default))
+            {
+                StreamWriter ss = new StreamWriter(ff, Encoding.Default);
 
-
-            foreach (var item in pubs)
+                //sr.WriteLine("Name  /Metro  /Address  /Comment  /Visit  /Average Price");
+                foreach (var item in pubs)
                 {
-                    sr.Write(item.Pubinfo());
+                    sr.WriteLine(item.Pubinfo());
 
-                foreach (var j in item.Cranes)
-                {
-                    ss.Write(j.PosInfo());
+                    //sr.WriteLine("BName  /Sort  /Brewery  /Country  /Alc  /Bprice");
+                    foreach (var j in item.Cranes)
+                    {
+                        ss.WriteLine(j.PosInfo());
+                    }
+
                 }
-                ss.WriteLine(";");
+                ss.Close();
+                ff.Close();
             }
-            ff.Close();
-            ss.Close();
-            sr.Close();
             fs.Close();
-            
-            
+
+
             MessageBox.Show("Successfully imported to tpubs.txt");
         }
-
+            
+        
         private void ExpT_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 if (File.Exists("../../tpubs.txt"))
                 {
                     List1.Items.Clear();
@@ -242,40 +245,62 @@ namespace PubList
                     {
                         sb += sr.ReadLine();
                     }
-                    sr.Close();
-                    fs.Close();
                     while (!ss.EndOfStream)
                     {
                         bb += ss.ReadLine();
                     }
-                    var mbb = bb.Split(',');
-                    var mbo = sb.Split(',');
-                    foreach (var jj in mbb)
-                    {
-                        var MassBb = jj.Split(':');
-                        lb.Add(new Positions(MassBb[1], MassBb[3], MassBb[5], MassBb[7], double.Parse(MassBb[9]), int.Parse(MassBb[11])));
-                    }
-                    
-                    foreach (var item in mbo)
-                    {
-                        var MassBo = item.Split(':');
-                        pb.Add(new Pubs(MassBo[1], MassBo[7], MassBo[3], MassBo[5],lb,i,MassBo[7],double.Parse(MassBo[9])));   
-                    }
-                    
-                    foreach (Pubs item in pb)
-                    {
-                        List1.Items.Add(item);
-                    }
-
+                    var mbb = bb.Split(';');
+                    var mbo = sb.Split(';');
+                 
+                    sr.Close();
                     fs.Close();
-                    MessageBox.Show("Your data was successfully imported from tpubs.txt");
-                
-                    
+                    if (File.ReadAllText("../../tpos.txt") == "")
+                    {
+
+                        foreach (var item in mbo)
+                        {
+                            var MassBo = item.Split(',');
+                            pb.Add(new Pubs(MassBo[0], MassBo[3], MassBo[1], MassBo[2], lb, i, MassBo[4], double.Parse(MassBo[5])));
+                        }
+
+                        foreach (Pubs item in pb)
+                        {
+                            List1.Items.Add(item);
+                        }
+                        fs.Close();
+                        MessageBox.Show("Your data was successfully imported from tpubs.txt (beer list not incl.)");
+                    }
+                    else
+                    {
+
+                        foreach (var jj in mbb)
+                        {
+                            var MassBb = jj.Split(',');
+                        if (MassBb.Length < 11)
+                        { break; }
+                            lb.Add(new Positions(MassBb[1], MassBb[3], MassBb[5], MassBb[7], double.Parse(MassBb[9]), int.Parse(MassBb[11])));
+                        }
+
+                        foreach (var item in mbo)
+                        {
+                            var MassBo = item.Split(',');
+                            pb.Add(new Pubs(MassBo[1], MassBo[7], MassBo[3], MassBo[5], lb, i, MassBo[7], double.Parse(MassBo[9])));
+                        }
+
+                        foreach (Pubs item in pb)
+                        {
+                            List1.Items.Add(item);
+                        }
+
+                        fs.Close();
+                        MessageBox.Show("Your data was successfully imported from tpubs.txt");
+
+                    }
                 }
                 else
                     MessageBox.Show("You need to import any data first.");
-            }
-            catch (Exception exx) { MessageBox.Show(exx.Message); }
+            //}
+            //catch (Exception exx) { MessageBox.Show(exx.Message); }
         }
 
         private void Del_Click(object sender, RoutedEventArgs e)
@@ -284,17 +309,39 @@ namespace PubList
             List1.Items.Remove(a);
             pubs.Remove((Pubs)a);
         }
+
+        private void Been_Click(object sender, RoutedEventArgs e)
+        {
+            var a = List1.SelectedItem;
+            foreach (var item in pubs)
+            {
+                if ((Pubs)a == item)
+                {
+                    item.vs = "yes";
+                    List1.Items.Refresh();
+                }
+            }
+        }
+
+
+        private void Nbeen_Click(object sender, RoutedEventArgs e)
+        {
+            var a = List1.SelectedItem;
+            foreach (var item in pubs)
+            {
+                if ((Pubs)a == item)
+                {
+                    item.vs = "no";
+                    List1.Items.Refresh();
+                }
+            }
+
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(Pages.EditPage);
+        }
     }
-
-
-    //private void AddToVisited_Click(object sender, RoutedEventArgs e)
-    //{
-    //    var r = (Pubs)List1.SelectedItem;
-    //    Pubs p = new Pubs {
-    //        Number = r.Number,
-    //        Name = r.Name,
-    //        Metro = r.Metro };
-    //    visited_pubs.Add(p);
-    //}
 }
 

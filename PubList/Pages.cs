@@ -10,7 +10,7 @@ namespace PubList
     {
         private static AddNewItem _addnewitem = new AddNewItem();
         private static MainPage _mainPage = new MainPage();
-        //private static AddPersonPage _addPersonPage = new AddPersonPage();
+        private static EditPage _editPage = new EditPage();
 
         public static MainPage MainPage
         {
@@ -28,13 +28,13 @@ namespace PubList
             }
         }
 
-        //public static AddPersonPage AddPersonPage
-        //{
-        //    get
-        //    {
-        //        return _addPersonPage;
-        //    }
-        //}
+        public static EditPage EditPage
+        {
+            get
+            {
+                return _editPage;
+            }
+        }
 
     }
 }
