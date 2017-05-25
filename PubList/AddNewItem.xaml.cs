@@ -173,7 +173,7 @@ namespace PubList
                     MessageBox.Show("Please select the beer sort or fill in its name");
                     return;
                 }
-                if (Regex.IsMatch(AlcV.Text, @"^\d+$")|| Regex.IsMatch(BPrice.Text, @"^\d+$"))
+                if (!(Regex.IsMatch(AlcV.Text, @"^\d+$"))||!(Regex.IsMatch(BPrice.Text, @"^\d+$")))
                 {
                     MessageBox.Show("Check if you entered all the info correctly (some of it is numeric)");
                     return;
@@ -223,7 +223,7 @@ namespace PubList
                 }
                 else
                 {
-                    Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text, Address.Text, beer, Pages.MainPage.i, yn.Text, Average_Value(AvPr));
+                    Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text, Address.Text, beer, Pages.MainPage.i, yn.Text);
                     Pages.MainPage.i++;
                     Pages.MainPage.List1.Items.Add(np);
                     Pages.MainPage.List1.Items.Refresh();

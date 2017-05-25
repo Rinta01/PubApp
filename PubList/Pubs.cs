@@ -100,6 +100,15 @@ namespace PubList
             vs = g;
             AvPrice = h;
         }
-
+        public Pubs(string Name, string b, string c, string d, List<Positions> e, int f, string g)
+        {
+            this.Name = Name;
+            Comment = b;
+            Metro = c;
+            Address = d;
+            Cranes = e;
+            Number = f;
+            vs = g;
+        }
     }
 }

@@ -251,28 +251,32 @@ namespace PubList
                 }
                 var mbo = sb.Split(';');
                 var mbb = bb.Split(';');
-
                 sr.Close();
                 fs.Close();
+
                 if (File.ReadAllText("../../tpos.txt") == "")
                 {
+                    //string[] n = new string [1];
+                    //n ={ ""; };
 
-                    foreach (var item in mbo)
-                    {
+                        foreach (var item in mbo)
+                        {
+                            var MassBo = item.Split(',');          
+                            pb.Add(new Pubs(MassBo[0], MassBo[3], MassBo[1], MassBo[2], lb, i, MassBo[4], double.Parse(MassBo[5])));
+                            i++;
+     
+                        }
 
-                        var MassBo = item.Split(',');
-                        if (item == null)
-                            break;
-                        pb.Add(new Pubs(MassBo[0], MassBo[3], MassBo[1], MassBo[2], lb, i, MassBo[4], double.Parse(MassBo[5])));
+                        foreach (Pubs item in pb)
+                        {
+                            List1.Items.Add(item);
+                        }
+                        sr.Close();
+                        fs.Close();
+                        MessageBox.Show("Your data was successfully imported from tpubs.txt (beer list not incl.)");
                     }
+                
 
-                    foreach (Pubs item in pb)
-                    {
-                        List1.Items.Add(item);
-                    }
-                    fs.Close();
-                    MessageBox.Show("Your data was successfully imported from tpubs.txt (beer list not incl.)");
-                }
                 else
                 {
 
