@@ -9,8 +9,8 @@ namespace PubList
     class Pages
     {
         private static AddNewItem _addnewitem = new AddNewItem();
-        private static MainPage _mainPage = new MainPage();
-        private static EditPage _editPage = new EditPage();
+        private static  MainPage _mainPage = new MainPage();
+        private  static EditPage _editPage = new EditPage();
 
         public static MainPage MainPage
         {
