@@ -193,11 +193,12 @@ namespace PubList
                     AlcV.Clear();
                     BPrice.Clear();
                     BCountry.Clear();
-                    AvPr.Add(int.Parse(BPrice.Text));
-                
+                //int a = int.Parse(BPrice.Text);
+                //AvPr.Add(a);
+
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
+}
 
         private void Apply_Click(object sender, RoutedEventArgs e)
         {

@@ -57,7 +57,7 @@
                         <GridViewColumn Header="Country" DisplayMemberBinding="{Binding Path=Country}" Width="90"/>
                         <GridViewColumn Header="Brewery" DisplayMemberBinding="{Binding Path=Brewery}" Width="90"/>
                         <GridViewColumn Header="Alc,%" DisplayMemberBinding="{Binding Path=Alc}" Width="90"/>
-                        <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path=BPrice}" Width="90"/>
+                        <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path=Bprice}" Width="90"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
