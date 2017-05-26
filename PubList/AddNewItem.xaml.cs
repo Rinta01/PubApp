@@ -220,7 +220,8 @@ namespace PubList
                     Metro.Clear();
                     Comment.Clear();
                     Address.Clear();
-                    yn.SelectedValue = null;
+                yn.SelectedValue = null;
+                    
                 }
                 else
                 {

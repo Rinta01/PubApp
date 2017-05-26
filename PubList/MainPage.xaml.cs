@@ -22,7 +22,7 @@ namespace PubList
     /// </summary>
     public partial class MainPage : Page
     {
-        List<Pubs> pubs = new List<Pubs>();
+        static List<Pubs> pubs = new List<Pubs>();
         public int i = 1;
         public MainPage()
         {
@@ -97,6 +97,17 @@ namespace PubList
         {
             Random g = new Random();
             int r = g.Next(0, pubs.Count);
+            string a;
+            foreach (var item in pubs)
+            {
+                if (r==item.Number)
+                {
+                    a = item.Name;
+                    MessageBox.Show(string.Format("{0}, {1}", r.ToString(), a));
+                }
+            }
+
+        
         }
 
         private void srch_GotFocus(object sender, RoutedEventArgs e)
