@@ -189,14 +189,14 @@ namespace PubList
 
                     BinaryFormatter bf = new BinaryFormatter();
 
-                    List<Pubs> pb = (List<Pubs>)bf.Deserialize(fs);
+                    List<Pubs> pb = bf.Deserialize(fs) as List<Pubs>;
                     foreach (Pubs item in pb)
                     {
                         List1.Items.Add(item);
                     }
 
                     fs.Close();
-                    MessageBox.Show("Your data was successfully imported from pubs.dat");
+                    MessageBox.Show("Your data was successfully exported from pubs.dat");
 
 
                 }
