@@ -287,12 +287,15 @@ namespace PubList
                         { break; }
                         lb.Add(new Positions(MassBb[0], MassBb[1], MassBb[2], MassBb[3], double.Parse(MassBb[4]), int.Parse(MassBb[5])));
                     }
-
+                    int k = 1;
                     foreach (var item in mbo)
                     {
+                        
                         var MassBo = item.Split(',');
-                        pb.Add(new Pubs(MassBo[0], MassBo[3], MassBo[1], MassBo[2], lb, i, MassBo[4], double.Parse(MassBo[5])));
+                        pb.Add(new Pubs(MassBo[0], MassBo[3], MassBo[1], MassBo[2], lb, k, MassBo[4], double.Parse(MassBo[5])));
+                        k++;
                     }
+                    k = 0;
 
                     foreach (Pubs item in pb)
                     {
