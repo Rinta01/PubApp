@@ -1,1 +1,1 @@
-BlackJack,Ale,Bla,Англия,5,300;
+BlackJack,Stout,Bbla,Ireland,5,300;

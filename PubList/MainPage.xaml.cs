@@ -164,6 +164,7 @@ namespace PubList
                 if (File.Exists("../../pubs.dat"))
                 {
                     List1.Items.Clear();
+                    pubs.Clear();
                     FileStream fs = new FileStream(@"../../pubs.dat", FileMode.Open, FileAccess.Read);
 
 
@@ -172,10 +173,10 @@ namespace PubList
                     List<Pubs> pb = bf.Deserialize(fs) as List<Pubs>;
                     foreach (Pubs item in pb)
                     {
+                        pubs.Add(item);
                         List1.Items.Add(item);
                     }
-
-                    
+                   
                     fs.Close();
                     MessageBox.Show("Your data was successfully imported from pubs.dat");
 
@@ -267,6 +268,7 @@ namespace PubList
                     g = 0;
                         foreach (Pubs item in pb)
                         {
+                        pubs.Add(item);
                             List1.Items.Add(item);
                         }
                         sr.Close();
@@ -294,6 +296,7 @@ namespace PubList
 
                     foreach (Pubs item in pb)
                     {
+                        pubs.Add(item);
                         List1.Items.Add(item);
                     }
 
