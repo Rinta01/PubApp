@@ -22,6 +22,7 @@ namespace PubList
     public partial class AddNewItem : Page
 
     {
+        
         List<int> AvPr = new List<int>();
         List<Positions> beer = new List<Positions>();
         public AddNewItem()
@@ -212,6 +213,7 @@ namespace PubList
                 {
                 
                 Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text, Address.Text, Pages.MainPage.i, yn.Text);
+                Pages.MainPage.pubs.Add(np);
                     Pages.MainPage.i++;
                     Pages.MainPage.List1.Items.Add(np);
                     Pages.MainPage.List1.Items.Refresh();
@@ -221,12 +223,19 @@ namespace PubList
                     Comment.Clear();
                     Address.Clear();
                 yn.SelectedValue = null;
-                    
-                }
+                Crane.Clear();
+                cmb.SelectedValue = null; ;
+                Brewery.Clear();
+                AlcV.Clear();
+                BPrice.Clear();
+                BCountry.Clear();
+
+            }
                 else
                 {
                     Pubs np = new Pubs(Nm.Text, Comment.Text, Metro.Text, Address.Text, beer, Pages.MainPage.i, yn.Text);
-                    Pages.MainPage.i++;
+                Pages.MainPage.pubs.Add(np);
+                Pages.MainPage.i++;
                     Pages.MainPage.List1.Items.Add(np);
                     Pages.MainPage.List1.Items.Refresh();
                     NavigationService.Navigate(Pages.MainPage);
@@ -235,8 +244,14 @@ namespace PubList
                     Comment.Clear();
                     Address.Clear();
                     yn.SelectedValue = null;
+                Crane.Clear();
+                cmb.SelectedValue = null; ;
+                Brewery.Clear();
+                AlcV.Clear();
+                BPrice.Clear();
+                BCountry.Clear();
 
-                }
+            }
             //}
             //catch (Exception ee){ MessageBox.Show(ee.Message); }
         }

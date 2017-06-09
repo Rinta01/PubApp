@@ -22,35 +22,14 @@ namespace PubList
     /// </summary>
     public partial class MainPage : Page
     {
-        static List<Pubs> pubs = new List<Pubs>();
+        public List<Pubs> pubs = new List<Pubs>();
         public int i = 1;
         public MainPage()
         {
             InitializeComponent();
-            if (File.Exists(@".././tpubs.txt") && new FileInfo(@".././tpubs.txt").Length == 0)
-            {
-                if (File.Exists("../../pubs.dat"))
-                {
-                    List1.Items.Clear();
-                    FileStream fs = new FileStream(@"../../pubs.dat", FileMode.Open, FileAccess.Read);
-
-
-                    BinaryFormatter bf = new BinaryFormatter();
-
-                    List<Pubs> pb = (List<Pubs>)bf.Deserialize(fs);
-                    foreach (Pubs item in pb)
-                    {
-                        List1.Items.Add(item);
-                    }
-
-                    fs.Close();
-                    MessageBox.Show("Your data was successfully imported from pubs.dat");
-
-
-                }
-                else
-                    MessageBox.Show("You need to import any data first.");
-
+            if (File.Exists(@".././tpubs.txt") && (new FileInfo(@".././tpubs.txt").Length != 0)) //Замена на дат
+            { 
+                 Some_Method();     
             }
             else
             {
@@ -85,9 +64,10 @@ namespace PubList
 
         private void Some_Method() //this method is called
         {
-            ExpD_Click(new object(), new RoutedEventArgs());
+            ExpT_Click(new object(), new RoutedEventArgs());
         }
 
+       
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(Pages.Addnewitem); ;
@@ -165,7 +145,7 @@ namespace PubList
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void ImpD_Click(object sender, RoutedEventArgs e)
+        private void ExpD_Click(object sender, RoutedEventArgs e)
         {
             using (FileStream fs = new FileStream(@"../../pubs.dat", FileMode.Create, FileAccess.Write))
             {
@@ -174,10 +154,10 @@ namespace PubList
                 bf.Serialize(fs, pubs);
 
             }
-            MessageBox.Show("Successfully imported to pubs.dat");
+            MessageBox.Show("Successfully exported to pubs.dat");
         }
 
-        private void ExpD_Click(object sender, RoutedEventArgs e)
+        private void ImpD_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -195,8 +175,9 @@ namespace PubList
                         List1.Items.Add(item);
                     }
 
+                    
                     fs.Close();
-                    MessageBox.Show("Your data was successfully exported from pubs.dat");
+                    MessageBox.Show("Your data was successfully imported from pubs.dat");
 
 
                 }
@@ -205,7 +186,7 @@ namespace PubList
             }
             catch (Exception exx) { MessageBox.Show(exx.Message); }
         }
-        private void ImpT_Click(object sender, RoutedEventArgs e)
+        private void ExpT_Click(object sender, RoutedEventArgs e)
         {
             FileStream fs = new FileStream(@"../../tpubs.txt", FileMode.Create, FileAccess.Write);
             FileStream ff = new FileStream(@"../../tpos.txt", FileMode.Create, FileAccess.Write);
@@ -218,6 +199,7 @@ namespace PubList
                 foreach (var item in pubs)
                 {
                     sr.WriteLine(item.Pubinfo());
+                    
 
                     //sr.WriteLine("BName  /Sort  /Brewery  /Country  /Alc  /Bprice");
                     foreach (var j in item.Cranes)
@@ -232,11 +214,11 @@ namespace PubList
             fs.Close();
 
 
-            MessageBox.Show("Successfully imported to tpubs.txt");
+            MessageBox.Show("Successfully exported to tpubs.txt");
         }
 
 
-        private void ExpT_Click(object sender, RoutedEventArgs e)
+        private void ImpT_Click(object sender, RoutedEventArgs e) //Чтение
         {
             //try
             //{
@@ -254,11 +236,17 @@ namespace PubList
                 List<Positions> lb = new List<Positions>();
                 while (!sr.EndOfStream)
                 {
-                    sb += sr.ReadLine();
+                    string s = sr.ReadLine();
+                    if (sr.EndOfStream)
+                        s = s.Remove(s.Length - 1);
+                    sb += s;
                 }
                 while (!ss.EndOfStream)
                 {
-                    bb += ss.ReadLine();
+                    string z = ss.ReadLine();
+                    if (sr.EndOfStream)
+                          z.Remove(z.Length - 1);
+                    bb += z;
                 }
                 var mbo = sb.Split(';');
                 var mbb = bb.Split(';');
@@ -267,17 +255,16 @@ namespace PubList
 
                 if (File.ReadAllText("../../tpos.txt") == "")
                 {
-                    //string[] n = new string [1];
-                    //n ={ ""; };
+                    int g = 1;
 
-                        foreach (var item in mbo)
+                    foreach (var item in mbo)
                         {
                             var MassBo = item.Split(',');          
-                            pb.Add(new Pubs(MassBo[0], MassBo[3], MassBo[1], MassBo[2], lb, i, MassBo[4], double.Parse(MassBo[5])));
-                            i++;
+                            pb.Add(new Pubs(MassBo[0], MassBo[3], MassBo[1], MassBo[2], lb, g, MassBo[4], double.Parse(MassBo[5])));
+                            g++;
      
                         }
-
+                    g = 0;
                         foreach (Pubs item in pb)
                         {
                             List1.Items.Add(item);
@@ -296,13 +283,13 @@ namespace PubList
                         var MassBb = jj.Split(',');
                         if (MassBb.Length < 11)
                         { break; }
-                        lb.Add(new Positions(MassBb[1], MassBb[3], MassBb[5], MassBb[7], double.Parse(MassBb[9]), int.Parse(MassBb[11])));
+                        lb.Add(new Positions(MassBb[0], MassBb[1], MassBb[2], MassBb[3], double.Parse(MassBb[4]), int.Parse(MassBb[5])));
                     }
 
                     foreach (var item in mbo)
                     {
                         var MassBo = item.Split(',');
-                        pb.Add(new Pubs(MassBo[1], MassBo[7], MassBo[3], MassBo[5], lb, i, MassBo[7], double.Parse(MassBo[9])));
+                        pb.Add(new Pubs(MassBo[0], MassBo[3], MassBo[1], MassBo[2], lb, i, MassBo[4], double.Parse(MassBo[5])));
                     }
 
                     foreach (Pubs item in pb)
@@ -335,10 +322,10 @@ namespace PubList
             {
                 if ((Pubs)a == item)
                 {
-                    item.vs = "yes";
-                    List1.Items.Refresh();
+                    item.vs = "yes";               
                 }
             }
+            List1.Items.Refresh();
         }
 
 

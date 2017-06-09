@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace PubList
 {
     [Serializable]
-    class Positions
+    public class Positions
     {
         public string BName { get; set; }
         public string Country { get; set; }

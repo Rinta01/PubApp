@@ -48,14 +48,14 @@
             </StackPanel>
         </Button>
         <Button x:Name="Del" Content="Del" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" Height="28" Grid.Column="2" Margin="29.333,46,0,0" Grid.Row="4" Click="Del_Click"/>
-        <Button x:Name="ImpT" Height="36" Content="Import to .txt" RenderTransformOrigin="7.724,10.833" Grid.Column="2" Margin="113.333,0,0,43" Grid.Row="3" HorizontalAlignment="Left" Width="114" Click="ImpT_Click" VerticalAlignment="Bottom"/>
+        <Button x:Name="ImpT" Height="36" Content="Import from .txt" RenderTransformOrigin="7.724,10.833" Grid.Column="2" Margin="113.333,0,0,43" Grid.Row="3" HorizontalAlignment="Left" Width="114" Click="ImpT_Click" VerticalAlignment="Bottom"/>
         <ComboBox Name="cbox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="103" Grid.Column="1" Margin="13.333,45,0,0">
             <ComboBoxItem>Name</ComboBoxItem>
             <ComboBoxItem>Metro</ComboBoxItem>
         </ComboBox>
-        <Button Name="ImpD" Content="Import to .dat" Grid.Column="2" HorizontalAlignment="Left" Height="36" Margin="113.333,73,0,0" VerticalAlignment="Top" Width="114" Click="ImpD_Click" Grid.RowSpan="2"/>
-        <Button Name="ExpD" Height="36" Content="Export from .dat" VerticalAlignment="Top" Grid.Column="2" Margin="113.333,32.333,8,0" Grid.Row="1"  Grid.RowSpan="2" Click="ExpD_Click"/>
-        <Button Name="ExpT" Content="Export from .txt" Height="36" Grid.Column="2" HorizontalAlignment="Left" Margin="113.333,43.333,0,0" Grid.Row="3" VerticalAlignment="Top" Width="114" Click="ExpT_Click"/>
+        <Button Name="ImpD" Content="Import from .dat" Grid.Column="2" HorizontalAlignment="Left" Height="36" Margin="113.333,73,0,0" VerticalAlignment="Top" Width="114" Click="ImpD_Click" Grid.RowSpan="2"/>
+        <Button Name="ExpD" Height="36" Content="Export to .dat" VerticalAlignment="Top" Grid.Column="2" Margin="113.333,32.333,8,0" Grid.Row="1"  Grid.RowSpan="2" Click="ExpD_Click"/>
+        <Button Name="ExpT" Content="Export to .txt" Height="36" Grid.Column="2" HorizontalAlignment="Left" Margin="113.333,43.333,0,0" Grid.Row="3" VerticalAlignment="Top" Width="114" Click="ExpT_Click"/>
         <Button Name="Been" Content="I've been there" Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="94.333,12,0,0" Grid.Row="4" VerticalAlignment="Top" Width="133" Click="Been_Click"/>
         <Button Name="Nbeen" Content="I haven't been there yet" Grid.Column="2" HorizontalAlignment="Left" Height="21" Margin="94.333,53,0,0" Grid.Row="4" VerticalAlignment="Top" Width="133" Click="Nbeen_Click"/>
     </Grid>
