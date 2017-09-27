@@ -1,1 +1,0 @@
-BlackJack,Stout,Bbla,Ireland,5,300;

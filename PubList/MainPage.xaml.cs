@@ -91,25 +91,12 @@ namespace PubList
         }
 
         private void srch_GotFocus(object sender, RoutedEventArgs e)
-        {
-
-            TextBox tb = (TextBox)sender;
-            if (tb.IsFocused)
-            {
-                tb.Text = string.Empty;
-                tb.GotFocus -= srch_GotFocus;
-                tb.FontWeight = FontWeights.Regular;
-                tb.FontStyle = FontStyles.Normal;
-            }
-            tb.GotFocus += srch_GotFocus;
-        }
-
-        private void MenuItem_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
+        {      
+                srch.Clear();
         }
         private void Whr_Click(object sender, RoutedEventArgs e)
         {
+            bool b = true;
             string a = cbox.Text;
             try
             {
@@ -123,8 +110,10 @@ namespace PubList
                             List1.Items.Add(item);
 
                         }
-                        else MessageBox.Show("No such items were found.");
+                        else b = false;
                     }
+                    if (b == false)
+                        MessageBox.Show("No such items were found.");
                 }
 
 
@@ -137,8 +126,10 @@ namespace PubList
                             List1.Items.Clear();
                             List1.Items.Add(i);
                         }
-                        else MessageBox.Show("No such items were found.");
+                        else b = false;
                     }
+                    if (b == false)
+                        MessageBox.Show("No such items were found.");
                 }
 
             }
@@ -317,8 +308,9 @@ namespace PubList
         private void Del_Click(object sender, RoutedEventArgs e)
         {
             var a = List1.SelectedItem;
-            List1.Items.Remove(a);
             pubs.Remove((Pubs)a);
+            List1.Items.Remove(a);
+
         }
 
         private void Been_Click(object sender, RoutedEventArgs e)
@@ -328,7 +320,7 @@ namespace PubList
             {
                 if ((Pubs)a == item)
                 {
-                    item.vs = "yes";               
+                   item.vs = "yes";               
                 }
             }
             List1.Items.Refresh();

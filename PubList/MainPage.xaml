@@ -52,7 +52,7 @@
         <Button x:Name="Randomize" Content="???" Height="30" Margin="202,23,145.667,0" Grid.Row="4" VerticalAlignment="Top" Click="Randomize_Click" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="Adding"  FontFamily="Blackadder ITC" Background= "Cornsilk" Height="54" Margin="55.333,15,198.333,0" Grid.Row="4" TextWrapping="Wrap" FontSize="20" TextAlignment="Left"  VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1"><Run Text="    Add new /"/><LineBreak/><Run/><Run Text="                      /Delete pub"/></TextBlock>
         <Button x:Name="Add" Content="Add" Height="30" Margin="56.333,15,142.333,0" Grid.Row="4" VerticalAlignment="Top" Grid.Column="2" Click = "Add_Click" RenderTransformOrigin="0.352,-1.053" />
-        <TextBox x:Name="srch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" Margin="128.333,45,125.333,0" Grid.ColumnSpan="2" Text="Search" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="srch_GotFocus"/>
+        <TextBox x:Name="srch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" Margin="128.333,45,125.333,0" Grid.ColumnSpan="2" Text="Search"  GotFocus="srch_GotFocus"/>
         <Button Click="Whr_Click" x:Name="Whr" HorizontalAlignment="Left" VerticalAlignment="Top" Width="33" Grid.Column="2" Margin="113.333,45,0,0" Height="23">
             <StackPanel>
                 <Image Height="25" Width="28" Source="Images/search.jpg" Stretch="UniformToFill"/>
