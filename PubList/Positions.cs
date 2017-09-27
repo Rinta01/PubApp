@@ -27,16 +27,6 @@ namespace PubList
             Bprice = f;
         }
 
-        //public Positions(string a, string b, string c, string d, int e)
-        //{
-        //    BName = a;
-        //    Sort = b;
-        //    Brewery = c;
-        //    Country = d;
-        //    Alc = 0;
-        //    Bprice = e;
-        //}
-
         public string PosInfo()
         {
             return string.Format("{0},{1},{2},{3},{4},{5};", BName, Sort, Brewery, Country, Alc, Bprice);

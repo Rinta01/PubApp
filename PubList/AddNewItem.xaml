@@ -37,7 +37,7 @@
             <ComboBoxItem>Soft Drink</ComboBoxItem>
             <ComboBoxItem>???</ComboBoxItem>
         </ComboBox>
-        <TextBox x:Name="Nm" GotFocus="Nm_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="8.667,10,0,0" TextWrapping="Wrap" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Text="How is it called?" VerticalAlignment="Top" Width="489"/>
+        <TextBox x:Name="Nm" GotFocus="Nm_GotFocus" LostFocus="Nm_LostFocus" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="8.667,10,0,0" TextWrapping="Wrap" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Text="How is it called?" VerticalAlignment="Top" Width="489"/>
         <TextBox x:Name="Metro" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Metro Station" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" VerticalAlignment="Top" Width="196" Grid.Column="1" Margin="8.667,10.667,0,0" Grid.Row="1" GotFocus="Metro_GotFocus"/>
         <TextBox x:Name="Address" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="234.667,9.667,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Address" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" GotFocus="Address_GotFocus" VerticalAlignment="Top" Width="263"/>
         <TextBox x:Name="Comment" GotFocus="Comment_GotFocus" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="8.667,10.333,0,0" Grid.Row="2" TextWrapping="Wrap" TextAlignment="Left" FontWeight="ExtraLight" FontStyle="Oblique" Text="Share some of your thoughts" VerticalAlignment="Top" Width="489"/>

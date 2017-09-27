@@ -33,128 +33,71 @@ namespace PubList
         private void Metro_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            if (tb.IsFocused)
-            {
                 tb.Text = string.Empty;
-                tb.GotFocus -= Metro_GotFocus;
                 tb.FontWeight = FontWeights.Regular;
                 tb.FontStyle = FontStyles.Normal;
-            }
-            tb.GotFocus += Metro_GotFocus;
         }
 
         private void Address_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox tb = (TextBox)sender;
-            if (tb.IsFocused)
-            {
+            TextBox tb = sender as TextBox;
                 tb.Text = string.Empty;
-                tb.GotFocus -= Metro_GotFocus;
                 tb.FontWeight = FontWeights.Regular;
                 tb.FontStyle = FontStyles.Normal;
-            }
-            tb.GotFocus += Metro_GotFocus;
         }
 
         private void Comment_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            if (tb.IsFocused)
-            {
-                tb.Text = string.Empty;
-                tb.GotFocus -= Comment_GotFocus;
-                tb.FontWeight = FontWeights.Regular;
-                tb.FontStyle = FontStyles.Normal;
-            }
-            tb.GotFocus += Comment_GotFocus;
+            tb.Text = string.Empty;
+            tb.FontWeight = FontWeights.Regular;
+            tb.FontStyle = FontStyles.Normal;
         }
 
         private void Nm_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox tb = (TextBox)sender;
-            var a = tb.Text;
-            var b = tb.FontWeight;
-            var c = tb.FontStyle;
-
-            if (tb.IsFocused)
-            {
-                tb.Text = string.Empty;
-                //tb.GotFocus -= Nm_GotFocus;
-                tb.FontWeight = FontWeights.Regular;
-                tb.FontStyle = FontStyles.Normal;
-
-            }
-
-
-            //tb.Text = a;
-            //tb.FontWeight = b;
-            //tb.FontStyle = c;
-
+            Nm.Text = "";
+           
         }
 
         private void Crane_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            if (tb.IsFocused)
-            {
                 tb.Text = string.Empty;
-                tb.GotFocus -= Crane_GotFocus;
                 tb.FontWeight = FontWeights.Regular;
                 tb.FontStyle = FontStyles.Normal;
-            }
-            tb.GotFocus += Crane_GotFocus;
         }
 
         private void BCountry_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            var r = tb.Text;
-            if (tb.IsFocused)
-            {
                 tb.Text = string.Empty;
-                tb.GotFocus -= BCountry_GotFocus;
                 tb.FontWeight = FontWeights.Regular;
-                tb.FontStyle = FontStyles.Normal;
-            }
-            tb.GotFocus += BCountry_GotFocus;
+            tb.FontStyle = FontStyles.Normal;
         }
 
         private void AlcV_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            if (tb.IsFocused)
-            {
                 tb.Text = string.Empty;
-                tb.GotFocus -= AlcV_GotFocus;
                 tb.FontWeight = FontWeights.Regular;
                 tb.FontStyle = FontStyles.Normal;
-            }
-            tb.GotFocus += AlcV_GotFocus;
         }
 
         private void Brewery_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            if (tb.IsFocused)
-            {
                 tb.Text = string.Empty;
-                tb.GotFocus -= Brewery_GotFocus;
                 tb.FontWeight = FontWeights.Regular;
                 tb.FontStyle = FontStyles.Normal;
-            }
-            tb.GotFocus += Brewery_GotFocus;
         }
         private void BPrice_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            if (tb.IsFocused)
-            {
-                tb.Text = string.Empty;
-                tb.GotFocus -= BPrice_GotFocus;
+                 tb.Text = string.Empty;
                 tb.FontWeight = FontWeights.Regular;
                 tb.FontStyle = FontStyles.Normal;
-            }
-            tb.GotFocus += BPrice_GotFocus;
+            
         }
 
         public void NCheck(string a)
@@ -256,8 +199,6 @@ namespace PubList
             //catch (Exception ee){ MessageBox.Show(ee.Message); }
         }
     
-
-
         public double Average_Value(List<int> abc)
         {
             List<int> bra = new List<int>();
@@ -265,6 +206,12 @@ namespace PubList
                 return bra.ElementAt(0);
             return bra.Average();
 
+        }
+        private void Nm_LostFocus(object sender, RoutedEventArgs e)
+        {
+            
+            Nm.FontWeight = FontWeights.Regular;
+            Nm.FontStyle = FontStyles.Normal;
         }
     }
    
