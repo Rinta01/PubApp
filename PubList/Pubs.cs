@@ -15,15 +15,14 @@ namespace PubList
         public string Comment { get; set; }
         public string Metro { get; set; }
         public string Address { get; set; }
-        private string loc;
         public double AvPrice { get; set; }
+        private string loc;
 
         public string Location
         {
             get { return loc; }
             set {
-                string mde = Metro + Address;
-                loc = mde;
+                loc = Metro + Address;
                 loc = value; }
         }
 

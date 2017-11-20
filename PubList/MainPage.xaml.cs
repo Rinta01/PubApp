@@ -70,7 +70,7 @@ namespace PubList
        
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(Pages.Addnewitem); ;
+            NavigationService.Navigate(Pages.Addnewitem); 
         }
 
         private void Randomize_Click(object sender, RoutedEventArgs e)
