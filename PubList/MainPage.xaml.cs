@@ -136,48 +136,48 @@ namespace PubList
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void ExpD_Click(object sender, RoutedEventArgs e)
-        {
-            using (FileStream fs = new FileStream(@"../../pubs.dat", FileMode.Create, FileAccess.Write))
-            {
-                BinaryFormatter bf = new BinaryFormatter();
+        //private void ExpD_Click(object sender, RoutedEventArgs e)
+        //{
+        //    using (FileStream fs = new FileStream(@"../../pubs.dat", FileMode.Create, FileAccess.Write))
+        //    {
+        //        BinaryFormatter bf = new BinaryFormatter();
 
-                bf.Serialize(fs, pubs);
+        //        bf.Serialize(fs, pubs);
 
-            }
-            MessageBox.Show("Successfully exported to pubs.dat");
-        }
+        //    }
+        //    MessageBox.Show("Successfully exported to pubs.dat");
+        //}
 
-        private void ImpD_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (File.Exists("../../pubs.dat"))
-                {
-                    List1.Items.Clear();
-                    pubs.Clear();
-                    FileStream fs = new FileStream(@"../../pubs.dat", FileMode.Open, FileAccess.Read);
+        //private void ImpD_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (File.Exists("../../pubs.dat"))
+        //        {
+        //            List1.Items.Clear();
+        //            pubs.Clear();
+        //            FileStream fs = new FileStream(@"../../pubs.dat", FileMode.Open, FileAccess.Read);
 
 
-                    BinaryFormatter bf = new BinaryFormatter();
+        //            BinaryFormatter bf = new BinaryFormatter();
 
-                    List<Pubs> pb = bf.Deserialize(fs) as List<Pubs>;
-                    foreach (Pubs item in pb)
-                    {
-                        pubs.Add(item);
-                        List1.Items.Add(item);
-                    }
+        //            List<Pubs> pb = bf.Deserialize(fs) as List<Pubs>;
+        //            foreach (Pubs item in pb)
+        //            {
+        //                pubs.Add(item);
+        //                List1.Items.Add(item);
+        //            }
                    
-                    fs.Close();
-                    MessageBox.Show("Your data was successfully imported from pubs.dat");
+        //            fs.Close();
+        //            MessageBox.Show("Your data was successfully imported from pubs.dat");
 
 
-                }
-                else
-                    MessageBox.Show("You need to import any data first.");
-            }
-            catch (Exception exx) { MessageBox.Show(exx.Message); }
-        }
+        //        }
+        //        else
+        //            MessageBox.Show("You need to import any data first.");
+        //    }
+        //    catch (Exception exx) { MessageBox.Show(exx.Message); }
+        //}
         private void ExpT_Click(object sender, RoutedEventArgs e)
         {
             FileStream fs = new FileStream(@"../../tpubs.txt", FileMode.Create, FileAccess.Write);
@@ -339,6 +339,13 @@ namespace PubList
                 }
             }
 
+        }
+        private void List1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Key.Delete == e.Key)
+            {
+                List1.Items.Remove(List1.SelectedItem);
+            }
         }
     }
 }
